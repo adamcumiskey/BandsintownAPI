@@ -11,7 +11,7 @@
 typedef NS_ENUM(NSInteger, BITDateRangeType) {
     kAllDates,
     kUpcomingDates,
-    kDatesInclusive,
+    kDatesAfter,
     kDatesInRange
 };
 
@@ -21,14 +21,15 @@ typedef NS_ENUM(NSInteger, BITDateRangeType) {
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *endDate;
 
+- (id)initWithStartDate:(NSDate *)endDate;
 
 - (id)initWithStartDate:(NSDate *)startDate
              andEndDate:(NSDate *)endDate;
 
-- (id)initWithEndDate:(NSDate *)endDate;
-
 - (id)initForUpcomingEvents;
 
 - (id)initForAllEvents;
+
+- (NSString *)dateRangeString;
 
 @end

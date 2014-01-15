@@ -30,9 +30,6 @@
 {
     [super viewDidLoad];
 
-    [BITRequest getInfoForArtist:@"Skrillex" completionHandler:^(BOOL success, BITArtist *artist, NSError *error) {
-        NSLog(@"Artist Name: %@", artist.name);
-    }];
 }
 
 - (void)didReceiveMemoryWarning

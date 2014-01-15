@@ -10,6 +10,7 @@
 
 @implementation BITDateRange
 
+#pragma mark - Public Methods
 - (id)initWithStartDate:(NSDate *)startDate
              andEndDate:(NSDate *)endDate
 {
@@ -21,11 +22,11 @@
     return self;
 }
 
-- (id)initWithEndDate:(NSDate *)endDate
+- (id)initWithStartDate:(NSDate *)startDate
 {
     if (self = [super init]) {
-        _endDate = endDate;
-        _type = kDatesInclusive;
+        _startDate = startDate;
+        _type = kDatesAfter;
     }
     return self;
 }
@@ -44,6 +45,42 @@
         _type = kAllDates;
     }
     return self;
+}
+
+- (NSString *)dateRangeString
+{
+    switch (_type) {
+        case kAllDates:
+            return @"all";
+            break;
+            
+        case kUpcomingDates:
+            return @"upcoming";
+            break;
+            
+        case kDatesAfter:
+            return [self stringForDate:_startDate];
+            break;
+            
+        case kDatesInRange:
+            return [NSString stringWithFormat:@"%@,%@",
+                    [self stringForDate:_startDate],
+                    [self stringForDate:_endDate]];
+            break;
+            
+        default:
+            return nil;
+            break;
+    }
+}
+
+#pragma mark - Private Methods
+- (NSString *)stringForDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-mm-dd"];
+    
+    return [dateFormatter stringFromDate:date];
 }
 
 @end

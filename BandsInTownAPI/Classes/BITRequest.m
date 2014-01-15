@@ -14,17 +14,51 @@
 #import "BITArtist.h"
 
 NSString * const apiURL = @"http://api.bandsintown.com/artists/";
+NSString * const apiVersion = @"2.0";
 
 @implementation BITRequest
 
-- (void)checkAuth
+#pragma mark - Public Methods
+/** Generate the URLRequest from the object */
+- (NSMutableURLRequest *)urlRequest
 {
-    NSAssert([[BITAuthManager sharedManager] isAuthorized],
-             @"Your app must provide an app_id to use the BandsInTownAPI.\
-             \nPlease use the [BITAuthManager provideAppName:] method in\
-             [AppDelegate didFinishLaunchingWithOptions:] to provide an app_id.");
+    NSMutableURLRequest *request;
+    NSString *requestString;
+    
+    if ([self isArtistRequest]) {
+        requestString = [apiURL stringByAppendingFormat:@"%@.json?api_version=%@&app_id=%@",
+                         _artistName,
+                         apiVersion,
+                         appName];
+    } else {
+        requestString = [apiURL stringByAppendingFormat:@"%@/events.json?api_version=%@&app_name=%@",
+                         _artistName,
+                         apiVersion,
+                         appName];
+    }
+    
+    request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
+    return request;
 }
 
+#pragma mark - Private Methods
+/** Checks to see if the request is for an artist only */
+// Return: BOOL
+- (BOOL)isArtistRequest
+{
+    if (!_dates &&
+        !_location &&
+        !_radius &&
+        !_onlyRecs) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+/** Parse NSData object from response into BITArtist object */
+// Params: NSData
+// Return: BITArtist
 - (BITArtist *)artistFromData:(NSData *)data
 {
     NSDictionary *jsonDictionary = [data objectFromJSONData];
@@ -36,6 +70,9 @@ NSString * const apiURL = @"http://api.bandsintown.com/artists/";
     }
 }
 
+/** Parse NSData object from response into array of BITEvent objects */
+// Params: NSData
+// Return: NSArray
 - (NSArray *)eventsFromData:(NSData *)data
 {
     NSDictionary *jsonDictionary = [data objectFromJSONData];
@@ -44,75 +81,13 @@ NSString * const apiURL = @"http://api.bandsintown.com/artists/";
     return nil;
 }
 
-- (void)sendArtistRequest:(artistCompletionHandler)completionHandler
+/** Assert that the developer has provided an app_id */
+- (void)checkAuth
 {
-    
+    NSAssert([[BITAuthManager sharedManager] isAuthorized],
+             @"Your app must provide an app_id to use the BandsInTownAPI.\
+             \nPlease use the [BITAuthManager provideAppName:] method in\
+             [AppDelegate didFinishLaunchingWithOptions:] to provide an app_id.");
 }
-
-- (void)sendEventsRequest:(eventsCompletionHandler)completionHandler
-{
-    
-}
-
-//+ (void)getInfoForArtist:(NSString *)artist
-//       completionHandler:(artistCompletionHandler)completionHandler
-//{
-//    [self checkAuth];
-//    
-//    // Add excape characters to the artist string
-//    artist = [artist stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    
-//    NSMutableString *requestString = [NSMutableString stringWithString:apiURL];
-//    [requestString appendFormat:@"%@.json?api_version=2.0&app_id=%@", artist, [[BITAuthManager sharedManager] appName]];
-//
-//    NSURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]];
-//    [NSURLConnection sendAsynchronousRequest:request
-//                                       queue:[NSOperationQueue mainQueue]
-//                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-//                               if (connectionError) {
-//                                   NSLog(@"Error in [BITRequest getInfoForArtist:], %@", connectionError);
-//                                   completionHandler(NO, nil, connectionError);
-//                               } else if (!response) {
-//                                   NSLog(@"No response from [BITRequest getInfoForArtist]");
-//                                   completionHandler(NO, nil, nil);
-//                               } else {
-//                                   BITArtist *artist = [self artistFromData:data];
-//                                   if (artist) {
-//                                       completionHandler(YES, artist, nil);
-//                                   } else {
-//                                       completionHandler(NO, nil, nil);
-//                                   }
-//                               }
-//                           }];
-//}
-//
-//+ (void)getAllShowsForArtist:(NSString *)artist
-//{
-//    [self checkAuth];
-//    
-//    // Add excape characters to the artist string
-//    artist = [artist stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    
-//    NSMutableString *requestString = [NSMutableString stringWithString:apiURL];
-//    [requestString appendFormat:@"%@/events.json?api_version=2.0&app_id=%@", artist, [[BITAuthManager sharedManager] appName]];
-//}
-//
-//+ (void)getUpcomingShowsForArtist:(NSString *)artist
-//{
-//    [self checkAuth];
-//}
-//
-//+ (void)getShowsForArtist:(NSString *)artist
-//                afterDate:(NSDate *)date
-//{
-//    [self checkAuth];
-//}
-//
-//+ (void)getShowsForArtist:(NSString *)artist
-//                 fromDate:(NSDate *)startDate
-//                   toDate:(NSString *)endDate
-//{
-//    [self checkAuth];
-//}
 
 @end
