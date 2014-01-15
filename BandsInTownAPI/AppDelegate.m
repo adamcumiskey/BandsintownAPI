@@ -7,11 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "BITAuthManager.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [BITAuthManager provideAppName:@"BandsInTownAPITest"];
+    
     // Override point for customization after application launch.
     return YES;
 }

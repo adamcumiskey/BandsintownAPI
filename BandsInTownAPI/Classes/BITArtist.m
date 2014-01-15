@@ -10,4 +10,9 @@
 
 @implementation BITArtist
 
+- (id)initWithDictionary:(NSDictionary *)dictonary
+{
+    return self;
+}
+
 @end

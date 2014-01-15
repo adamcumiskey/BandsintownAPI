@@ -1,18 +1,13 @@
 //
-//  BITEvent.m
+//  BITTestViewController.h
 //  BandsInTownAPI
 //
 //  Created by Adam Cumiskey on 1/14/14.
 //  Copyright (c) 2014 Adam Cumiskey. All rights reserved.
 //
 
-#import "BITEvent.h"
+#import <UIKit/UIKit.h>
 
-@implementation BITEvent
-
-- (id)initWithDictionary:(NSDictionary *)dictionary
-{
-    return self;
-}
+@interface BITTestViewController : UITableViewController
 
 @end
