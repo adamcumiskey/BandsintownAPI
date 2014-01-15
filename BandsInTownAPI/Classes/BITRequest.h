@@ -16,7 +16,7 @@
 @property (strong, nonatomic) BITDateRange *dates;
 @property (strong, nonatomic) NSString *location;
 @property (strong, nonatomic) NSNumber *radius;
-@property (nonatomic) BOOL onlyRecs;
+@property (strong, nonatomic) NSNumber *onlyRecs;
 
 - (NSURLRequest *)urlRequest;
 

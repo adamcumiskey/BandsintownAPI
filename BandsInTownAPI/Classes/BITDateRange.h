@@ -30,6 +30,6 @@ typedef NS_ENUM(NSInteger, BITDateRangeType) {
 
 - (id)initForAllEvents;
 
-- (NSString *)dateRangeString;
+- (NSString *)string;
 
 @end

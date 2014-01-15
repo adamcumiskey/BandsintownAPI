@@ -47,7 +47,7 @@
     return self;
 }
 
-- (NSString *)dateRangeString
+- (NSString *)string
 {
     switch (_type) {
         case kAllDates:

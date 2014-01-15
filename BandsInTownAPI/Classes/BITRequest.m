@@ -11,7 +11,7 @@
 #import "BITRequest.h"
 #import "BITAuthManager.h"
 
-#import "BITArtist.h"
+#import "BITDateRange.h"
 
 NSString * const apiURL = @"http://api.bandsintown.com/artists/";
 NSString * const apiVersion = @"2.0";
@@ -35,6 +35,22 @@ NSString * const apiVersion = @"2.0";
                          _artistName,
                          apiVersion,
                          appName];
+        
+        if (_dates) {
+            requestString = [requestString stringByAppendingFormat:@"&date=%@", [_dates string]];
+        }
+        
+        if (_location) {
+            
+        }
+        
+        if (_radius) {
+            
+        }
+        
+        if (_onlyRecs) {
+            
+        }
     }
     
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
