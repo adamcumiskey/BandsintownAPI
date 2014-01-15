@@ -13,7 +13,7 @@
 
 #import "BITArtist.h"
 
-#define apiURL @"http://api.bandsintown.com/artists/"
+NSString * const apiURL = @"http://api.bandsintown.com/artists/";
 
 @implementation BITRequest
 
@@ -22,6 +22,25 @@
     NSAssert([[BITAuthManager sharedManager] isAuthorized],
              @"Your app must provide an app_id to use the BandsInTownAPI.\
              \nPlease use the [BITAuthManager provideAppName:] method to provide an app_id.");
+}
+
++ (BITArtist *)artistFromData:(NSData *)data
+{
+    NSDictionary *jsonDictionary = [data objectFromJSONData];
+    if (jsonDictionary && (id)jsonDictionary != [NSNull null]) {
+        BITArtist *artist = [[BITArtist alloc] initWithDictionary:jsonDictionary];
+        return artist;
+    } else {
+        return nil;
+    }
+}
+
++ (NSArray *)eventsFromData:(NSData *)data
+{
+    NSDictionary *jsonDictionary = [data objectFromJSONData];
+    if (jsonDictionary && (id)jsonDictionary != [NSNull null]) {
+    }
+    return nil;
 }
 
 + (void)getInfoForArtist:(NSString *)artist
@@ -46,10 +65,11 @@
                                    NSLog(@"No response from [BITRequest getInfoForArtist]");
                                    completionHandler(NO, nil, nil);
                                } else {
-                                   NSDictionary *jsonDictionary = [data objectFromJSONData];
-                                   if (jsonDictionary && (id)jsonDictionary != [NSNull null]) {
-                                       BITArtist *artist = [[BITArtist alloc] initWithDictionary:jsonDictionary];
+                                   BITArtist *artist = [self artistFromData:data];
+                                   if (artist) {
                                        completionHandler(YES, artist, nil);
+                                   } else {
+                                       completionHandler(NO, nil, nil);
                                    }
                                }
                            }];
@@ -58,6 +78,12 @@
 + (void)getAllShowsForArtist:(NSString *)artist
 {
     [self checkAuth];
+    
+    // Add excape characters to the artist string
+    artist = [artist stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableString *requestString = [NSMutableString stringWithString:apiURL];
+    [requestString appendFormat:@"%@/events.json?api_version=2.0&app_id=%@", artist, [[BITAuthManager sharedManager] appName]];
 }
 
 + (void)getUpcomingShowsForArtist:(NSString *)artist
