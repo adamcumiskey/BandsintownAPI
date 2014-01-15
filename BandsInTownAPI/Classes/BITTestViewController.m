@@ -7,6 +7,9 @@
 //
 
 #import "BITTestViewController.h"
+#import "BITRequest.h"
+
+#import "BITArtist.h";
 
 @interface BITTestViewController ()
 
@@ -27,11 +30,9 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [BITRequest getInfoForArtist:@"Skrillex" completionHandler:^(BOOL success, BITArtist *artist, NSError *error) {
+        NSLog(@"Artist Name: %@", artist.name);
+    }];
 }
 
 - (void)didReceiveMemoryWarning

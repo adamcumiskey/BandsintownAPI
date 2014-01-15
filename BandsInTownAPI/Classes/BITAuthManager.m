@@ -28,6 +28,11 @@
 
 + (void)provideAppName:(NSString *)name
 {
+    // Make sure the name is valid
+    NSAssert(name, @"App name cannot be nil");
+    NSAssert(![name isEqualToString:@""], @"Name cannot be an empty string");
+    NSAssert(![name isEqualToString:appName], @"Must provide unique app name for BandsInTownAPI");
+    
     appName = name;
     [[self sharedManager] setAuthorized:YES];
 }

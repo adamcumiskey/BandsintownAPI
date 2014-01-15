@@ -8,10 +8,24 @@
 
 #import "BITArtist.h"
 
+static const NSString *kArtistNameKey = @"name";
+static const NSString *kArtistImageURLKey = @"image_url";
+static const NSString *kArtistThumbURLKey = @"thumb_url";
+static const NSString *kFacebookTourDatesURLKey = @"facebook_tour_dates_url";
+static const NSString *kMusicBrainzIDKey = @"mbid";
+static const NSString *kUpcomingEventsCountKey = @"upcoming_events_count";
+
 @implementation BITArtist
 
 - (id)initWithDictionary:(NSDictionary *)dictonary
 {
+    _name = [dictonary objectForKey:kArtistNameKey];
+    _mbid = [dictonary objectForKey:kMusicBrainzIDKey];
+    _imageURL = [dictonary objectForKey:kArtistImageURLKey];
+    _thumbURL = [dictonary objectForKey:kArtistThumbURLKey];
+    _facebookTourDatesURL = [dictonary objectForKey:kFacebookTourDatesURLKey];
+    _numberOfUpcomingEvents = [dictonary objectForKey:kUpcomingEventsCountKey];
+    
     return self;
 }
 

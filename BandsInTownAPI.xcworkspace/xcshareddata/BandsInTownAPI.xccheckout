@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A3713C41-2564-410A-8B25-A5328F09365C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BandsInTownAPI</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>622B3872-C01C-406D-B411-E78ECF73E52D</key>
+		<string>https://github.com/adamcumiskey/BandsInTownAPI.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BandsInTownAPI.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>622B3872-C01C-406D-B411-E78ECF73E52D</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/adamcumiskey/BandsInTownAPI.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>622B3872-C01C-406D-B411-E78ECF73E52D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>622B3872-C01C-406D-B411-E78ECF73E52D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BandsInTownAPI</string>
+		</dict>
+	</array>
+</dict>
+</plist>

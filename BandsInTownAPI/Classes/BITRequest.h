@@ -8,29 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, BITAritstIDType) {
-    kArtistName,
-    kMusicBrainzID,
-    kFacebookID
-};
+@class BITArtist;
+
+typedef void (^artistCompletionHandler)(BOOL success, BITArtist *artist, NSError *error);
 
 @interface BITRequest : NSObject
 
 + (void)getInfoForArtist:(NSString *)artist
-                  idType:(BITAritstIDType)idType;
+       completionHandler:(artistCompletionHandler)completionHandler;
 
-+ (void)getAllShowsForArtist:(NSString *)artist
-                      idType:(BITAritstIDType)idType;
++ (void)getAllShowsForArtist:(NSString *)artist;
 
-+ (void)getUpcomingShowsForArtist:(NSString *)artist
-                           idType:(BITAritstIDType)idType;
++ (void)getUpcomingShowsForArtist:(NSString *)artist;
 
 + (void)getShowsForArtist:(NSString *)artist
-                   idType:(BITAritstIDType)idType
                 afterDate:(NSDate *)date;
 
 + (void)getShowsForArtist:(NSString *)artist
-                   idType:(BITAritstIDType)idType
                  fromDate:(NSDate *)startDate
                    toDate:(NSString *)endDate;
 
