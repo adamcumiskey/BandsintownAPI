@@ -22,18 +22,7 @@ typedef void (^eventsCompletionHandler)(BOOL success, NSArray *events, NSError *
 @property (strong, nonatomic) NSNumber *radius;
 @property (strong, nonatomic) NSNumber *onlyRecs;
 
-+ (void)getInfoForArtist:(NSString *)artist
-       completionHandler:(artistCompletionHandler)completionHandler;
-
-+ (void)getAllShowsForArtist:(NSString *)artist;
-
-+ (void)getUpcomingShowsForArtist:(NSString *)artist;
-
-+ (void)getShowsForArtist:(NSString *)artist
-                afterDate:(NSDate *)date;
-
-+ (void)getShowsForArtist:(NSString *)artist
-                 fromDate:(NSDate *)startDate
-                   toDate:(NSString *)endDate;
+- (void)sendArtistRequest:(artistCompletionHandler)completionHandler;
+- (void)sendEventsRequest:(eventsCompletionHandler)completionHandler;
 
 @end
