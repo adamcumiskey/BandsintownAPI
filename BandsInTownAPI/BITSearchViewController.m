@@ -71,11 +71,11 @@
     [_startDateTextField setEnabled:YES];
     [_endDateTextField setEnabled:YES];
     
-    if (index == 0 || // Upcoming
-        index == 1) { // All
+    if (index == 1 || // Upcoming
+        index == 2) { // All
+        [_startDateTextField setText:@""];
+        [_endDateTextField setText:@""];
         [_startDateTextField setEnabled:NO];
-        [_endDateTextField setEnabled:NO];
-    } else if (index == 2) { // Inclusive
         [_endDateTextField setEnabled:NO];
     }
 }

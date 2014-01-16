@@ -24,6 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *includeRecommendationsSwitch;
 
+@property (weak, nonatomic) IBOutlet UIView *dateInputView;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIButton *datePickerDoneButton;
 

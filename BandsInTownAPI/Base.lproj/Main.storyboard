@@ -41,10 +41,9 @@
                                 <rect key="frame" x="20" y="156" width="280" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
+                                    <segment title="Range"/>
                                     <segment title="Upcoming"/>
                                     <segment title="All"/>
-                                    <segment title="Inclusive"/>
-                                    <segment title="Range"/>
                                 </segments>
                                 <connections>
                                     <action selector="dateTypeValueChanged:" destination="dqp-jD-Wlb" eventType="valueChanged" id="5tg-Rz-Fl1"/>
@@ -134,13 +133,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </data>
                                 </timeZone>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7mr-z3-BA8">
-                                <rect key="frame" x="234" y="568" width="70" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7mr-z3-BA8">
+                                <rect key="frame" x="0.0" y="568" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Done">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="datePickerDoneButtonPressed:" destination="dqp-jD-Wlb" eventType="touchUpInside" id="hCF-Im-fB6"/>
                                 </connections>
