@@ -22,6 +22,7 @@
 	// Do any additional setup after loading the view.
     
     [self setUpRadiusSlider];
+    [self setUpDatePicker];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -33,7 +34,7 @@
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
     _keyboardDismissGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                      action:@selector(dismissKeyboard)];
+                                                                      action:@selector(dismissInputView)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,16 +48,60 @@
     
 }
 
+#pragma mark - Date Picker Methods
+- (void)setUpDatePicker
+{
+    [self enableDateInputForSegmentIndex:_dateTypeSegmentedControl.selectedSegmentIndex];
+    
+    [_startDateTextField setInputView:_datePicker];
+    [_endDateTextField setInputView:_datePicker];
+    [_startDateTextField setInputAccessoryView:_datePickerDoneButton];
+    [_endDateTextField setInputAccessoryView:_datePickerDoneButton];
+    [_datePicker setMinimumDate:[NSDate date]];
+}
+
+- (IBAction)dateTypeValueChanged:(id)sender
+{
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    [self enableDateInputForSegmentIndex:segmentedControl.selectedSegmentIndex];
+}
+
+- (void)enableDateInputForSegmentIndex:(int)index;
+{
+    [_startDateTextField setEnabled:YES];
+    [_endDateTextField setEnabled:YES];
+    
+    if (index == 0 || // Upcoming
+        index == 1) { // All
+        [_startDateTextField setEnabled:NO];
+        [_endDateTextField setEnabled:NO];
+    } else if (index == 2) { // Inclusive
+        [_endDateTextField setEnabled:NO];
+    }
+}
+
+- (IBAction)datePickerDoneButtonPressed:(id)sender
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    
+    if ([_startDateTextField isFirstResponder]) {
+        [_startDateTextField setText:[dateFormatter stringFromDate:_datePicker.date]];
+    } else if ([_endDateTextField isFirstResponder]) {
+        [_endDateTextField setText:[dateFormatter stringFromDate:_datePicker.date]];
+
+    }
+    
+    [self dismissInputView];
+}
+
 #pragma mark - Slider Methods
 - (void)setUpRadiusSlider
 {
-    [_searchRadiusSlider addTarget:self
-                            action:@selector(sliderValueChanged:)
-                  forControlEvents:UIControlEventValueChanged];
     [self setSliderValueLabelText];
 }
 
-- (void)sliderValueChanged:(UISlider *)slider
+- (IBAction)sliderValueChanged:(id)sender
 {
     [self setSliderValueLabelText];
 }
@@ -79,7 +124,7 @@
     [self.view removeGestureRecognizer:_keyboardDismissGesture];
 }
 
-- (void)dismissKeyboard
+- (void)dismissInputView
 {
     // Dismiss the keyboard by resigning first responder status for any text field
     for (UIView *subview in self.view.subviews) {

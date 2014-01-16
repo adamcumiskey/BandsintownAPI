@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "BITAuthManager.h"
+#import "BandsInTown/BandsInTown.h"
 
 @implementation AppDelegate
 

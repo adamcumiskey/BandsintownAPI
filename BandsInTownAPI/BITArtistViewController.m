@@ -8,6 +8,7 @@
 
 #import "BITArtistViewController.h"
 
+
 @interface BITArtistViewController ()
 
 @end
