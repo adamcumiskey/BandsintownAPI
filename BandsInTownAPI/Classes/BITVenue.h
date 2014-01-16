@@ -15,7 +15,7 @@
 @property (strong, nonatomic) NSString *city;
 @property (strong, nonatomic) NSString *region;
 @property (strong, nonatomic) NSString *country;
-@property (nonatomic)         CLLocationCoordinate2D coordinate;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

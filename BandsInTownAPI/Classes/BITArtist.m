@@ -19,13 +19,15 @@ static const NSString *kUpcomingEventsCountKey = @"upcoming_events_count";
 
 - (id)initWithDictionary:(NSDictionary *)dictonary
 {
-    _name = [dictonary objectForKey:kArtistNameKey];
-    _mbid = [dictonary objectForKey:kMusicBrainzIDKey];
-    _imageURL = [dictonary objectForKey:kArtistImageURLKey];
-    _thumbURL = [dictonary objectForKey:kArtistThumbURLKey];
-    _facebookTourDatesURL = [dictonary objectForKey:kFacebookTourDatesURLKey];
-    _numberOfUpcomingEvents = [dictonary objectForKey:kUpcomingEventsCountKey];
-    
+    if (self = [super init]) {
+        _name = [dictonary objectForKey:kArtistNameKey];
+        _mbid = [dictonary objectForKey:kMusicBrainzIDKey];
+        _imageURL = [dictonary objectForKey:kArtistImageURLKey];
+        _thumbURL = [dictonary objectForKey:kArtistThumbURLKey];
+        _facebookTourDatesURL = [dictonary objectForKey:kFacebookTourDatesURLKey];
+        _numberOfUpcomingEvents = [dictonary objectForKey:kUpcomingEventsCountKey];
+    }
+
     return self;
 }
 
