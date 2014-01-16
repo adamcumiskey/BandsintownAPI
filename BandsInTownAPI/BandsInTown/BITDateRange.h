@@ -21,15 +21,21 @@ typedef NS_ENUM(NSInteger, BITDateRangeType) {
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *endDate;
 
-- (id)initWithStartDate:(NSDate *)endDate;
+// Returns the string representing this date range in the request URL
+- (NSString *)string;
 
+// Class initializers
++ (id)dateRangeWithStartDate:(NSDate *)startDate;
++ (id)dateRangeWithStartDate:(NSDate *)startDate
+             andEndDate:(NSDate *)endDate;
++ (id)upcomingEvents;
++ (id)allEvents;
+
+// Instance initializers
+- (id)initWithStartDate:(NSDate *)startDate;
 - (id)initWithStartDate:(NSDate *)startDate
              andEndDate:(NSDate *)endDate;
-
 - (id)initForUpcomingEvents;
-
 - (id)initForAllEvents;
-
-- (NSString *)string;
 
 @end
