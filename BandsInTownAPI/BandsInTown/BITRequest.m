@@ -12,11 +12,57 @@
 #import "BITAuthManager.h"
 
 #import "BITDateRange.h"
+#import "BITLocation.h"
 
 NSString * const apiURL = @"http://api.bandsintown.com/artists/";
 NSString * const apiVersion = @"2.0";
 
 @implementation BITRequest
+
+#pragma mark - Initializers
++ (id)requestWithArtist:(NSString *)artist
+{
+    return [[BITRequest alloc] initWithArtist:artist];
+}
+
++ (id)requestWithArtist:(NSString *)artist
+              dateRange:(BITDateRange *)dateRange
+               location:(BITLocation *)location
+                 radius:(NSNumber *)radius
+               onlyRecs:(BOOL)onlyRecs
+{
+    return [[BITRequest alloc] initWithArtist:artist
+                                    dateRange:dateRange
+                                     location:location
+                                       radius:radius
+                                     onlyRecs:onlyRecs];
+}
+
+- (id)initWithArtist:(NSString *)artist
+{
+    if (self = [super init]) {
+        _artistName = artist;
+    }
+    
+    return self;
+}
+
+- (id)initWithArtist:(NSString *)artist
+           dateRange:(BITDateRange *)dateRange
+            location:(BITLocation *)location
+              radius:(NSNumber *)radius
+            onlyRecs:(BOOL)onlyRecs
+{
+    if (self = [super init]) {
+        _artistName = artist;
+        _dates = dateRange;
+        _location = location;
+        _radius = radius;
+        _onlyRecs = onlyRecs;
+    }
+    
+    return self;
+}
 
 #pragma mark - Public Methods
 /** Generate the URLRequest from the object */
@@ -37,19 +83,22 @@ NSString * const apiVersion = @"2.0";
                          appName];
         
         if (_dates) {
-            requestString = [requestString stringByAppendingFormat:@"&date=%@", [_dates string]];
+            requestString = [requestString stringByAppendingFormat:@"&date=%@",
+                             [_dates string]];
         }
         
         if (_location) {
-            
+            requestString = [requestString stringByAppendingFormat:@"&location=%@",
+                             [_location string]];
         }
         
         if (_radius) {
-            
+            requestString = [requestString stringByAppendingFormat:@"&radius=%@",
+                             [NSString stringWithFormat:@"%@", _radius]];
         }
         
         if (_onlyRecs) {
-            
+            requestString = [requestString stringByAppendingString:@"&only_recs=true"];
         }
     }
     

@@ -30,6 +30,7 @@
 		66896DDF18876DCD00C48A16 /* BITRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DDE18876DCD00C48A16 /* BITRequest.m */; };
 		66896DE218876DD500C48A16 /* BITRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DE118876DD500C48A16 /* BITRequestManager.m */; };
 		66896DE518876DDD00C48A16 /* BITVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DE418876DDD00C48A16 /* BITVenue.m */; };
+		66896DE9188778A300C48A16 /* BITResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DE8188778A300C48A16 /* BITResponse.m */; };
 		8A36BDAD17AC4279B2684B8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6BB631C97449F193E91B59 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,8 @@
 		66896DE118876DD500C48A16 /* BITRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BITRequestManager.m; path = BandsInTownAPI/BandsInTown/BITRequestManager.m; sourceTree = SOURCE_ROOT; };
 		66896DE318876DDD00C48A16 /* BITVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BITVenue.h; path = BandsInTownAPI/BandsInTown/BITVenue.h; sourceTree = SOURCE_ROOT; };
 		66896DE418876DDD00C48A16 /* BITVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BITVenue.m; path = BandsInTownAPI/BandsInTown/BITVenue.m; sourceTree = SOURCE_ROOT; };
+		66896DE7188778A300C48A16 /* BITResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BITResponse.h; path = BandsInTown/BITResponse.h; sourceTree = "<group>"; };
+		66896DE8188778A300C48A16 /* BITResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BITResponse.m; path = BandsInTown/BITResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +220,7 @@
 				665ACE73188637DF002CD711 /* Location */,
 				665C272018861B9B00FF6833 /* Request */,
 				66896DB01887589600C48A16 /* RequestManager */,
+				66896DE61887789200C48A16 /* Response */,
 				665C270D18860F6600FF6833 /* Venue */,
 			);
 			name = Model;
@@ -280,6 +284,15 @@
 			);
 			name = RequestManager;
 			path = BandsInTown/RequestManager;
+			sourceTree = "<group>";
+		};
+		66896DE61887789200C48A16 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				66896DE7188778A300C48A16 /* BITResponse.h */,
+				66896DE8188778A300C48A16 /* BITResponse.m */,
+			);
+			name = Response;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,6 +433,7 @@
 				66896DE518876DDD00C48A16 /* BITVenue.m in Sources */,
 				66896DD918876DBE00C48A16 /* BITEvent.m in Sources */,
 				66896DCD18876C8600C48A16 /* BITTestViewController.m in Sources */,
+				66896DE9188778A300C48A16 /* BITResponse.m in Sources */,
 				66896DE218876DD500C48A16 /* BITRequestManager.m in Sources */,
 				66896DD318876DAF00C48A16 /* BITAuthManager.m in Sources */,
 				66896DD618876DB600C48A16 /* BITDateRange.m in Sources */,

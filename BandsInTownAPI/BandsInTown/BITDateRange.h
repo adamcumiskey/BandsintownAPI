@@ -17,9 +17,9 @@ typedef NS_ENUM(NSInteger, BITDateRangeType) {
 
 @interface BITDateRange : NSObject
 
-@property (nonatomic) BITDateRangeType type;
-@property (nonatomic, strong) NSDate *startDate;
-@property (nonatomic, strong) NSDate *endDate;
+@property (nonatomic, readonly) BITDateRangeType type;
+@property (nonatomic, strong, readonly) NSDate *startDate;
+@property (nonatomic, strong, readonly) NSDate *endDate;
 
 // Returns the string representing this date range in the request URL
 - (NSString *)string;

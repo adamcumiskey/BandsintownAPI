@@ -12,15 +12,15 @@
 typedef NS_ENUM(NSInteger, BITLocationType) {
     kStringLocation,
     kCoordinateLocation,
-    kCurrentLocation
 };
 
 @interface BITLocation : NSObject
 
-@property (strong, nonatomic) NSString *primaryString;
-@property (strong, nonatomic) NSString *secondaryString;
-@property (strong, nonatomic) NSString *latitude;
-@property (strong, nonatomic) NSString *longitude;
+@property (nonatomic) BITLocationType type;
+@property (strong, nonatomic, readonly) NSString *primaryString;
+@property (strong, nonatomic, readonly) NSString *secondaryString;
+@property (strong, nonatomic, readonly) NSString *latitude;
+@property (strong, nonatomic, readonly) NSString *longitude;
 
 // String to used to represent the BITLocation in the request URL
 - (NSString *)string;

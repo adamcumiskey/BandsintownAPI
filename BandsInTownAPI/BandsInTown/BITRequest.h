@@ -17,7 +17,21 @@
 @property (strong, nonatomic) BITDateRange *dates;
 @property (strong, nonatomic) BITLocation *location;
 @property (strong, nonatomic) NSNumber *radius;
-@property (strong, nonatomic) NSNumber *onlyRecs;
+@property (nonatomic) BOOL onlyRecs;
+
++ (id)requestWithArtist:(NSString *)artist;
++ (id)requestWithArtist:(NSString *)artist
+              dateRange:(BITDateRange *)dateRange
+               location:(BITLocation *)location
+                 radius:(NSNumber *)radius
+               onlyRecs:(BOOL)onlyRecs;
+
+- (id)initWithArtist:(NSString *)artist;
+- (id)initWithArtist:(NSString *)artist
+           dateRange:(BITDateRange *)dateRange
+            location:(BITLocation *)location
+              radius:(NSNumber *)radius
+            onlyRecs:(BOOL)onlyRecs;
 
 - (NSURLRequest *)urlRequest;
 - (BOOL)isArtistRequest;
