@@ -21,7 +21,6 @@
 		665C26FC18860C7E00FF6833 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 665C26FA18860C7E00FF6833 /* InfoPlist.strings */; };
 		665C26FE18860C7E00FF6833 /* BandsInTownAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 665C26FD18860C7E00FF6833 /* BandsInTownAPITests.m */; };
 		665C270C18860F4700FF6833 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 665C270B18860F4700FF6833 /* CoreLocation.framework */; };
-		66896DCD18876C8600C48A16 /* BITTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 665C271E1886168700FF6833 /* BITTestViewController.m */; };
 		66896DD018876DA100C48A16 /* BITArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DCF18876DA100C48A16 /* BITArtist.m */; };
 		66896DD318876DAF00C48A16 /* BITAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DD218876DAF00C48A16 /* BITAuthManager.m */; };
 		66896DD618876DB600C48A16 /* BITDateRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DD518876DB600C48A16 /* BITDateRange.m */; };
@@ -31,6 +30,9 @@
 		66896DE218876DD500C48A16 /* BITRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DE118876DD500C48A16 /* BITRequestManager.m */; };
 		66896DE518876DDD00C48A16 /* BITVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DE418876DDD00C48A16 /* BITVenue.m */; };
 		66896DE9188778A300C48A16 /* BITResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DE8188778A300C48A16 /* BITResponse.m */; };
+		66896DF21887925A00C48A16 /* BITArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DF11887925A00C48A16 /* BITArtistViewController.m */; };
+		66896DF51887927300C48A16 /* BITListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DF41887927300C48A16 /* BITListViewController.m */; };
+		66896DF91887929300C48A16 /* BITSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DF81887929300C48A16 /* BITSearchViewController.m */; };
 		8A36BDAD17AC4279B2684B8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6BB631C97449F193E91B59 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -65,8 +67,6 @@
 		665C26FB18860C7E00FF6833 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		665C26FD18860C7E00FF6833 /* BandsInTownAPITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BandsInTownAPITests.m; sourceTree = "<group>"; };
 		665C270B18860F4700FF6833 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		665C271D1886168700FF6833 /* BITTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITTestViewController.h; sourceTree = "<group>"; };
-		665C271E1886168700FF6833 /* BITTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BITTestViewController.m; sourceTree = "<group>"; };
 		66896DCE18876DA100C48A16 /* BITArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BITArtist.h; path = BandsInTownAPI/BandsInTown/BITArtist.h; sourceTree = SOURCE_ROOT; };
 		66896DCF18876DA100C48A16 /* BITArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BITArtist.m; path = BandsInTownAPI/BandsInTown/BITArtist.m; sourceTree = SOURCE_ROOT; };
 		66896DD118876DAF00C48A16 /* BITAuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BITAuthManager.h; path = BandsInTownAPI/BandsInTown/BITAuthManager.h; sourceTree = SOURCE_ROOT; };
@@ -86,6 +86,12 @@
 		66896DE7188778A300C48A16 /* BITResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BITResponse.h; path = BandsInTown/BITResponse.h; sourceTree = "<group>"; };
 		66896DE8188778A300C48A16 /* BITResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BITResponse.m; path = BandsInTown/BITResponse.m; sourceTree = "<group>"; };
 		66896DEA1887861A00C48A16 /* BandsInTown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandsInTown.h; sourceTree = "<group>"; };
+		66896DF01887925A00C48A16 /* BITArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITArtistViewController.h; sourceTree = "<group>"; };
+		66896DF11887925A00C48A16 /* BITArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BITArtistViewController.m; sourceTree = "<group>"; };
+		66896DF31887927300C48A16 /* BITListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITListViewController.h; sourceTree = "<group>"; };
+		66896DF41887927300C48A16 /* BITListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BITListViewController.m; sourceTree = "<group>"; };
+		66896DF71887929300C48A16 /* BITSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITSearchViewController.h; sourceTree = "<group>"; };
+		66896DF81887929300C48A16 /* BITSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BITSearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +143,8 @@
 		665C26C318860C7E00FF6833 = {
 			isa = PBXGroup;
 			children = (
-				665C26D518860C7E00FF6833 /* BandsInTownAPI */,
+				665C270718860E6100FF6833 /* BandsInTown */,
+				665C26D518860C7E00FF6833 /* BandsInTownAPIExample */,
 				665C26F718860C7E00FF6833 /* BandsInTownAPITests */,
 				665C26CE18860C7E00FF6833 /* Frameworks */,
 				665C26CD18860C7E00FF6833 /* Products */,
@@ -167,18 +174,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		665C26D518860C7E00FF6833 /* BandsInTownAPI */ = {
+		665C26D518860C7E00FF6833 /* BandsInTownAPIExample */ = {
 			isa = PBXGroup;
 			children = (
-				665C270718860E6100FF6833 /* BandsInTown */,
+				665C26E118860C7E00FF6833 /* Main.storyboard */,
 				665C26DE18860C7E00FF6833 /* AppDelegate.h */,
 				665C26DF18860C7E00FF6833 /* AppDelegate.m */,
-				665C26E118860C7E00FF6833 /* Main.storyboard */,
-				665C271D1886168700FF6833 /* BITTestViewController.h */,
-				665C271E1886168700FF6833 /* BITTestViewController.m */,
+				66896DEB1887920E00C48A16 /* Classes */,
 				665C26EA18860C7E00FF6833 /* Images.xcassets */,
 				665C26D618860C7E00FF6833 /* Supporting Files */,
 			);
+			name = BandsInTownAPIExample;
 			path = BandsInTownAPI;
 			sourceTree = "<group>";
 		};
@@ -226,6 +232,7 @@
 				665C270D18860F6600FF6833 /* Venue */,
 			);
 			name = BandsInTown;
+			path = BandsInTownAPI;
 			sourceTree = "<group>";
 		};
 		665C270D18860F6600FF6833 /* Venue */ = {
@@ -295,6 +302,51 @@
 				66896DE8188778A300C48A16 /* BITResponse.m */,
 			);
 			name = Response;
+			sourceTree = "<group>";
+		};
+		66896DEB1887920E00C48A16 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				66896DEC1887921300C48A16 /* ViewControllers */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		66896DEC1887921300C48A16 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				66896DEF1887923600C48A16 /* BITArtistViewController */,
+				66896DEE1887922900C48A16 /* BITListViewController */,
+				66896DED1887921C00C48A16 /* BITSearchViewController */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		66896DED1887921C00C48A16 /* BITSearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66896DF71887929300C48A16 /* BITSearchViewController.h */,
+				66896DF81887929300C48A16 /* BITSearchViewController.m */,
+			);
+			name = BITSearchViewController;
+			sourceTree = "<group>";
+		};
+		66896DEE1887922900C48A16 /* BITListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66896DF31887927300C48A16 /* BITListViewController.h */,
+				66896DF41887927300C48A16 /* BITListViewController.m */,
+			);
+			name = BITListViewController;
+			sourceTree = "<group>";
+		};
+		66896DEF1887923600C48A16 /* BITArtistViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66896DF01887925A00C48A16 /* BITArtistViewController.h */,
+				66896DF11887925A00C48A16 /* BITArtistViewController.m */,
+			);
+			name = BITArtistViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,17 +481,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66896DF51887927300C48A16 /* BITListViewController.m in Sources */,
 				66896DDF18876DCD00C48A16 /* BITRequest.m in Sources */,
 				66896DDC18876DC400C48A16 /* BITLocation.m in Sources */,
 				66896DD018876DA100C48A16 /* BITArtist.m in Sources */,
 				66896DE518876DDD00C48A16 /* BITVenue.m in Sources */,
 				66896DD918876DBE00C48A16 /* BITEvent.m in Sources */,
-				66896DCD18876C8600C48A16 /* BITTestViewController.m in Sources */,
+				66896DF21887925A00C48A16 /* BITArtistViewController.m in Sources */,
 				66896DE9188778A300C48A16 /* BITResponse.m in Sources */,
 				66896DE218876DD500C48A16 /* BITRequestManager.m in Sources */,
 				66896DD318876DAF00C48A16 /* BITAuthManager.m in Sources */,
 				66896DD618876DB600C48A16 /* BITDateRange.m in Sources */,
 				665C26E018860C7E00FF6833 /* AppDelegate.m in Sources */,
+				66896DF91887929300C48A16 /* BITSearchViewController.m in Sources */,
 				665C26DC18860C7E00FF6833 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

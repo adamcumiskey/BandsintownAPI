@@ -1,21 +1,18 @@
 //
-//  BITTestViewController.m
+//  BITListViewController.m
 //  BandsInTownAPI
 //
-//  Created by Adam Cumiskey on 1/14/14.
+//  Created by Adam Cumiskey on 1/15/14.
 //  Copyright (c) 2014 Adam Cumiskey. All rights reserved.
 //
 
-#import "BITTestViewController.h"
+#import "BITListViewController.h"
 
-#import "BandsInTown.h"
-
-
-@interface BITTestViewController ()
+@interface BITListViewController ()
 
 @end
 
-@implementation BITTestViewController
+@implementation BITListViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,22 +26,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    BITRequest *request = [[BITRequest alloc] initWithArtist:@"Giraffes? Giraffes!"];
-    
-    [BITRequestManager sendRequest:request
-             withCompletionHandler:^(BOOL success, BITResponse *response, NSError *error) {
-                 NSAssert(success, @"Fuck");
-                 
-                 BITArtist *artist = response.artist;
-                 NSLog(@"\n%@\n%@\n%@\n%@\n%@\n%@",
-                       artist.name,
-                       artist.mbid,
-                       artist.imageURL,
-                       artist.thumbURL,
-                       artist.facebookTourDatesURL,
-                       artist.numberOfUpcomingEvents);
-             }];
+
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
