@@ -75,12 +75,12 @@ NSString * const apiVersion = @"2.0";
         requestString = [apiURL stringByAppendingFormat:@"%@.json?api_version=%@&app_id=%@",
                          _artistName,
                          apiVersion,
-                         appName];
+                         [BITAuthManager appID]];
     } else {
-        requestString = [apiURL stringByAppendingFormat:@"%@/events.json?api_version=%@&app_name=%@",
+        requestString = [apiURL stringByAppendingFormat:@"%@/events.json?api_version=%@&app_id=%@",
                          _artistName,
                          apiVersion,
-                         appName];
+                         [BITAuthManager appID]];
         
         if (_dates) {
             requestString = [requestString stringByAppendingFormat:@"&date=%@",
@@ -101,6 +101,10 @@ NSString * const apiVersion = @"2.0";
             requestString = [requestString stringByAppendingString:@"&only_recs=true"];
         }
     }
+    
+    requestString = [requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSLog(@"Request String: %@", requestString);
     
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
     return request;

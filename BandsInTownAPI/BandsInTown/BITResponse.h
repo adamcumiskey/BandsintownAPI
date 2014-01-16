@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class BITArtist;
+
 @interface BITResponse : NSObject
+
+@property (strong, nonatomic) BITArtist *artist;
+@property (strong, nonatomic) NSArray *events;
+
+- (id)initWithArtist:(BITArtist *)artist;
+- (id)initWithEvents:(NSArray *)events;
 
 @end

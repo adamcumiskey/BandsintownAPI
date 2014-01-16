@@ -8,6 +8,8 @@
 
 #import "BITAuthManager.h"
 
+static NSString *appName = @"";
+
 @implementation BITAuthManager
 
 + (id)sharedManager
@@ -37,7 +39,7 @@
     [[self sharedManager] setAuthorized:YES];
 }
 
-- (NSString *)appName
++ (NSString *)appID
 {
     return appName;
 }

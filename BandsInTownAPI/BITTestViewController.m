@@ -7,7 +7,16 @@
 //
 
 #import "BITTestViewController.h"
-#import "BITAuthManager.h"
+
+#import "BITRequestManager.h"
+#import "BITRequest.h"
+#import "BITLocation.h"
+#import "BITDateRange.h"
+#import "BITArtist.h"
+#import "BITEvent.h"
+#import "BITVenue.h"
+#import "BITResponse.h"
+
 
 @interface BITTestViewController ()
 
@@ -27,7 +36,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    BITRequest *request = [[BITRequest alloc] initWithArtist:@"You Blew It!"];
+    
+    [BITRequestManager sendRequest:request
+             withCompletionHandler:^(BOOL success, BITResponse *response, NSError *error) {
+                 NSAssert(success, @"Fuck");
+                 
+                 BITArtist *artist = response.artist;
+                 NSLog(@"%@\n%@\n%@\n%@\n%@\n%@",
+                       artist.name,
+                       artist.mbid,
+                       artist.imageURL,
+                       artist.thumbURL,
+                       artist.facebookTourDatesURL,
+                       artist.numberOfUpcomingEvents);
+             }];
 }
 
 - (void)didReceiveMemoryWarning

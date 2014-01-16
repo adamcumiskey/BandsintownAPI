@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class BITRequest;
+@class BITResponse;
+
+
+typedef void (^requestCompletionHandler)(BOOL success, BITResponse *response, NSError *error);
+
+
+
 @interface BITRequestManager : NSObject
+
++ (void)sendRequest:(BITRequest *)request
+    withCompletionHandler:(requestCompletionHandler)completionHandler;
 
 @end

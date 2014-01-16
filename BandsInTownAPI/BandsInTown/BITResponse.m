@@ -10,4 +10,22 @@
 
 @implementation BITResponse
 
+- (id)initWithArtist:(BITArtist *)artist
+{
+    if (self = [super init]) {
+        _artist = artist;
+    }
+    
+    return self;
+}
+
+- (id)initWithEvents:(NSArray *)events
+{
+    if (self = [super init]) {
+        _events = events;
+    }
+    
+    return self;
+}
+
 @end

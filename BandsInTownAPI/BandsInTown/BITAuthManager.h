@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-static NSString *appName = @"YOUR_APP_NAME";
-
 @interface BITAuthManager : NSObject
 
 @property (nonatomic, getter = isAuthorized) BOOL authorized;
@@ -17,6 +15,6 @@ static NSString *appName = @"YOUR_APP_NAME";
 + (id)sharedManager;
 + (void)provideAppName:(NSString *)name;
 
-- (NSString *)appName;
++ (NSString *)appID;
 
 @end

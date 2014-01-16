@@ -14,13 +14,13 @@
 {
     switch (_type) {
         case kStringLocation:
-            return [NSString stringWithFormat:@"%@, %@",
+            return [NSString stringWithFormat:@"%@,%@",
                     _primaryString,
                     _secondaryString];
             break;
             
         case kCoordinateLocation:
-            return [NSString stringWithFormat:@"%@, %@",
+            return [NSString stringWithFormat:@"%@,%@",
                     _latitude,
                     _longitude];
             break;
