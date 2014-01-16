@@ -8,14 +8,7 @@
 
 #import "BITTestViewController.h"
 
-#import "BITRequestManager.h"
-#import "BITRequest.h"
-#import "BITLocation.h"
-#import "BITDateRange.h"
-#import "BITArtist.h"
-#import "BITEvent.h"
-#import "BITVenue.h"
-#import "BITResponse.h"
+#import "BandsInTown.h"
 
 
 @interface BITTestViewController ()
@@ -37,14 +30,14 @@
 {
     [super viewDidLoad];
     
-    BITRequest *request = [[BITRequest alloc] initWithArtist:@"You Blew It!"];
+    BITRequest *request = [[BITRequest alloc] initWithArtist:@"Giraffes? Giraffes!"];
     
     [BITRequestManager sendRequest:request
              withCompletionHandler:^(BOOL success, BITResponse *response, NSError *error) {
                  NSAssert(success, @"Fuck");
                  
                  BITArtist *artist = response.artist;
-                 NSLog(@"%@\n%@\n%@\n%@\n%@\n%@",
+                 NSLog(@"\n%@\n%@\n%@\n%@\n%@\n%@",
                        artist.name,
                        artist.mbid,
                        artist.imageURL,

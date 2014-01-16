@@ -71,6 +71,11 @@ NSString * const apiVersion = @"2.0";
     NSMutableURLRequest *request;
     NSString *requestString;
     
+    _artistName = [_artistName stringByReplacingOccurrencesOfString:@"/"
+                                                         withString:@"%2F"];
+    _artistName = [_artistName stringByReplacingOccurrencesOfString:@"?"
+                                                         withString:@"%3F"];
+    
     if ([self isArtistRequest]) {
         requestString = [apiURL stringByAppendingFormat:@"%@.json?api_version=%@&app_id=%@",
                          _artistName,

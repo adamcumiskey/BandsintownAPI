@@ -85,6 +85,7 @@
 		66896DE418876DDD00C48A16 /* BITVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BITVenue.m; path = BandsInTownAPI/BandsInTown/BITVenue.m; sourceTree = SOURCE_ROOT; };
 		66896DE7188778A300C48A16 /* BITResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BITResponse.h; path = BandsInTown/BITResponse.h; sourceTree = "<group>"; };
 		66896DE8188778A300C48A16 /* BITResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BITResponse.m; path = BandsInTown/BITResponse.m; sourceTree = "<group>"; };
+		66896DEA1887861A00C48A16 /* BandsInTown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandsInTown.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +170,7 @@
 		665C26D518860C7E00FF6833 /* BandsInTownAPI */ = {
 			isa = PBXGroup;
 			children = (
-				665C270718860E6100FF6833 /* Model */,
+				665C270718860E6100FF6833 /* BandsInTown */,
 				665C26DE18860C7E00FF6833 /* AppDelegate.h */,
 				665C26DF18860C7E00FF6833 /* AppDelegate.m */,
 				665C26E118860C7E00FF6833 /* Main.storyboard */,
@@ -210,9 +211,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		665C270718860E6100FF6833 /* Model */ = {
+		665C270718860E6100FF6833 /* BandsInTown */ = {
 			isa = PBXGroup;
 			children = (
+				66896DEA1887861A00C48A16 /* BandsInTown.h */,
 				665C270E18860F7100FF6833 /* Artist */,
 				665C27161886151A00FF6833 /* Auth */,
 				665ACE77188637F7002CD711 /* Date Range */,
@@ -223,7 +225,7 @@
 				66896DE61887789200C48A16 /* Response */,
 				665C270D18860F6600FF6833 /* Venue */,
 			);
-			name = Model;
+			name = BandsInTown;
 			sourceTree = "<group>";
 		};
 		665C270D18860F6600FF6833 /* Venue */ = {
