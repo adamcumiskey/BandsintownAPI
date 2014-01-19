@@ -31,4 +31,21 @@ static const NSString *kUpcomingEventsCountKey = @"upcoming_events_count";
     return self;
 }
 
+- (void)requestImageWithCompletionHandler:(artistImageCompletionHandler)completionHandler
+{
+    NSURLRequest *artistImageRequest = [NSURLRequest requestWithURL:_imageURL];
+    [NSURLConnection sendAsynchronousRequest:artistImageRequest
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data,
+                                               NSError *connectionError) {
+                               if (!connectionError) {
+                                   UIImage *artistImage = [UIImage imageWithData:data];
+                                   completionHandler(YES, artistImage, nil);
+                               } else {
+                                   completionHandler(NO, nil, connectionError);
+                               }
+                           }];
+}
+
 @end

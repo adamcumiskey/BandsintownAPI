@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^artistImageCompletionHandler)(BOOL success,
+                                             UIImage *artistImage,
+                                             NSError *error);
+
 @interface BITArtist : NSObject
 
 @property (strong, nonatomic) NSString *name;
@@ -18,5 +22,9 @@
 @property (strong, nonatomic) NSNumber *numberOfUpcomingEvents;
 
 - (id)initWithDictionary:(NSDictionary *)dictonary;
+
+// Uses an NSURLConnection to asynchronously grab the artist image.
+// The image is passed back through the completion handler.
+- (void)requestImageWithCompletionHandler:(artistImageCompletionHandler)completionHandler;
 
 @end

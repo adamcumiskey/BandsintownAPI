@@ -12,7 +12,9 @@
 @class BITResponse;
 
 
-typedef void (^requestCompletionHandler)(BOOL success, BITResponse *response, NSError *error);
+typedef void (^requestCompletionHandler)(BOOL success,
+                                         BITResponse *response,
+                                         NSError *error);
 
 
 

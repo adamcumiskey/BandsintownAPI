@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BITSearchViewController : UIViewController
+NS_ENUM(NSInteger, TextFieldTag) {
+    kArtistTextField = 1,
+    kStartDateTextField = 2,
+    kEndDateTextField = 3,
+    kLocationTextField = 4
+};
+
+@interface BITSearchViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *artistTextField;
 
@@ -24,9 +31,7 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *includeRecommendationsSwitch;
 
-@property (weak, nonatomic) IBOutlet UIView *dateInputView;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (weak, nonatomic) IBOutlet UIButton *datePickerDoneButton;
 
 
 - (IBAction)search:(id)sender;

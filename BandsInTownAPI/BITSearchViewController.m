@@ -7,6 +7,9 @@
 //
 
 #import "BITSearchViewController.h"
+#import "BITArtistViewController.h"
+
+#import "BandsInTown.h"
 
 @interface BITSearchViewController () {
     UITapGestureRecognizer *_keyboardDismissGesture;
@@ -45,7 +48,44 @@
 
 - (IBAction)search:(id)sender
 {
-    
+    if (![_artistTextField.text isEqualToString:@""]) {
+        BITRequest *request = [BITRequest requestWithArtist:_artistTextField.text];
+        [BITRequestManager sendRequest:request
+                 withCompletionHandler:^(BOOL success, BITResponse *response, NSError *error) {
+                     if (success) {
+                         BITArtist *artist = [response artist];
+                         NSLog(@"Artist: %@", artist.name);
+                     } else {
+                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                         message:error.localizedDescription
+                                                                        delegate:nil
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                 }];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"An artist is required to perform a search"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
+
+- (void)performSegueWithIdentifier:(NSString *)identifier
+                            sender:(id)sender
+{
+    if ([identifier isEqualToString:@"ArtistDetailSegue"]) {
+    }
+}
+
+#pragma mark - UITextField Delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self dismissInputView];
+    return YES;
 }
 
 #pragma mark - Date Picker Methods
@@ -55,8 +95,19 @@
     
     [_startDateTextField setInputView:_datePicker];
     [_endDateTextField setInputView:_datePicker];
-    [_startDateTextField setInputAccessoryView:_datePickerDoneButton];
-    [_endDateTextField setInputAccessoryView:_datePickerDoneButton];
+    
+    // Add a toolbar to the date picker
+    UIToolbar *datePickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,
+                                                                               0,
+                                                                               self.view.frame.size.width,
+                                                                               44)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                target:self
+                                                                                action:@selector(datePickerDoneButtonPressed)];
+    [datePickerToolbar setItems:@[doneButton]];
+    [_startDateTextField setInputAccessoryView:datePickerToolbar];
+    [_endDateTextField setInputAccessoryView:datePickerToolbar];
+    
     [_datePicker setMinimumDate:[NSDate date]];
 }
 
@@ -66,7 +117,7 @@
     [self enableDateInputForSegmentIndex:segmentedControl.selectedSegmentIndex];
 }
 
-- (void)enableDateInputForSegmentIndex:(int)index;
+- (void)enableDateInputForSegmentIndex:(NSInteger)index;
 {
     [_startDateTextField setEnabled:YES];
     [_endDateTextField setEnabled:YES];
@@ -80,19 +131,33 @@
     }
 }
 
-- (IBAction)datePickerDoneButtonPressed:(id)sender
+- (NSString *)stringForDate:(NSDate *)date
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterShortStyle];
     
-    if ([_startDateTextField isFirstResponder]) {
-        [_startDateTextField setText:[dateFormatter stringFromDate:_datePicker.date]];
-    } else if ([_endDateTextField isFirstResponder]) {
-        [_endDateTextField setText:[dateFormatter stringFromDate:_datePicker.date]];
+    return [dateFormatter stringFromDate:date];
+}
 
+- (void)datePickerDoneButtonPressed
+{
+    if ([_startDateTextField isFirstResponder]) {
+        [_startDateTextField setText:[self stringForDate:_datePicker.date]];
+    } else if ([_endDateTextField isFirstResponder]) {
+        [_endDateTextField setText:[self stringForDate:_datePicker.date]];
     }
     
     [self dismissInputView];
+}
+
+#pragma mark - Location Methods
+- (IBAction)locationSettingValueChanged:(id)sender
+{
+    if ([_locationTypeSegmentedControl selectedSegmentIndex] == 1) {
+        [_locationTextField setEnabled:NO];
+    } else {
+        [_locationTextField setEnabled:YES];
+    }
 }
 
 #pragma mark - Slider Methods
@@ -109,7 +174,7 @@
 - (void)setSliderValueLabelText
 {
     [_sliderValueLabel setText:[NSString stringWithFormat:@"%d miles",
-                                (NSInteger)_searchRadiusSlider.value]];
+                                (int)_searchRadiusSlider.value]];
 }
 
 #pragma mark - Keyboard Control
