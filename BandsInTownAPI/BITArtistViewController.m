@@ -43,13 +43,16 @@
     }];
     
     [_nameLabel setText:artist.name];
-    [_upcomingShowsLabel setText:[NSString stringWithFormat:@"%@",
+    [_upcomingShowsLabel setText:[NSString stringWithFormat:@"%@ upcoming shows",
                                   artist.numberOfUpcomingEvents]];
 }
 
 - (IBAction)viewShows:(id)sender
 {
-    
+    NSURL *facebookURL = [NSURL URLWithString:_artist.facebookTourDatesURLString];
+    if ([[UIApplication sharedApplication] canOpenURL:facebookURL]) {
+        [[UIApplication sharedApplication] openURL:facebookURL];
+    }
 }
 
 @end

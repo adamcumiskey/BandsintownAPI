@@ -22,9 +22,9 @@ static const NSString *kUpcomingEventsCountKey = @"upcoming_events_count";
     if (self = [super init]) {
         _name = [dictonary objectForKey:kArtistNameKey];
         _mbid = [dictonary objectForKey:kMusicBrainzIDKey];
-        _imageURL = [dictonary objectForKey:kArtistImageURLKey];
-        _thumbURL = [dictonary objectForKey:kArtistThumbURLKey];
-        _facebookTourDatesURL = [dictonary objectForKey:kFacebookTourDatesURLKey];
+        _imageURL = [NSURL URLWithString:[dictonary objectForKey:kArtistImageURLKey]];
+        _thumbURL = [NSURL URLWithString:[dictonary objectForKey:kArtistThumbURLKey]];
+        _facebookTourDatesURLString = [dictonary objectForKey:kFacebookTourDatesURLKey];
         _numberOfUpcomingEvents = [dictonary objectForKey:kUpcomingEventsCountKey];
     }
 

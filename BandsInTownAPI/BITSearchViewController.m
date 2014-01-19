@@ -54,7 +54,8 @@
                  withCompletionHandler:^(BOOL success, BITResponse *response, NSError *error) {
                      if (success) {
                          BITArtist *artist = [response artist];
-                         NSLog(@"Artist: %@", artist.name);
+                         [self performSegueWithIdentifier:@"ArtistDetailSegue"
+                                                   sender:artist];
                      } else {
                          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                                          message:error.localizedDescription
@@ -74,10 +75,12 @@
     }
 }
 
-- (void)performSegueWithIdentifier:(NSString *)identifier
-                            sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
 {
-    if ([identifier isEqualToString:@"ArtistDetailSegue"]) {
+    if ([segue.identifier isEqualToString:@"ArtistDetailSegue"]) {
+        BITArtistViewController *artistVC = [segue destinationViewController];
+        [artistVC setArtist:(BITArtist *)sender];
     }
 }
 

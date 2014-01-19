@@ -18,7 +18,7 @@ typedef void (^artistImageCompletionHandler)(BOOL success,
 @property (strong, nonatomic) NSString *mbid;
 @property (strong, nonatomic) NSURL *imageURL;
 @property (strong, nonatomic) NSURL *thumbURL;
-@property (strong, nonatomic) NSURL *facebookTourDatesURL;
+@property (strong, nonatomic) NSString *facebookTourDatesURLString;
 @property (strong, nonatomic) NSNumber *numberOfUpcomingEvents;
 
 - (id)initWithDictionary:(NSDictionary *)dictonary;
