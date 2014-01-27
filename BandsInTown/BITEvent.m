@@ -31,15 +31,15 @@ static const NSString *kEventVenueKey = @"venue";
 {
     if (self = [super init]) {
         _eventID = [dictionary objectForKey:kEventIDKey];
-        _title = [dictionary objectForKey:kEventTitleKey];
-        _eventDate = [self dateFromDateString:[dictionary objectForKey:kEventDateKey]];
-        _location = [dictionary objectForKey:kEventFormattedLocationKey];
-        //_ticketURL = [NSURL URLWithString:[dictionary objectForKey:kEventTicketURLKey]];
-        _ticketType = [dictionary objectForKey:kEventTicketTypeKey];
-        _ticketStatus = [dictionary objectForKey:kEventTicketStatusKey];
-        //_ticketOnSaleDate = [self dateFromDateString:[dictionary objectForKey:kEventOnSaleDateKey]];
-        //_facebookRSVPURL = [NSURL URLWithString:[dictionary objectForKey:kEventFacebookURLKey]];
-        _description = [dictionary objectForKey:kEventDescriptionKey];
+        _title = [self sanitizedString:[dictionary objectForKey:kEventTitleKey]];
+        _location = [self sanitizedString:[dictionary objectForKey:kEventFormattedLocationKey]];
+        _ticketType = [self sanitizedString:[dictionary objectForKey:kEventTicketTypeKey]];
+        _ticketStatus = [self sanitizedString:[dictionary objectForKey:kEventTicketStatusKey]];
+        _description = [self sanitizedString:[dictionary objectForKey:kEventDescriptionKey]];
+        _eventDate = [self dateFromDateString:[self sanitizedString:[dictionary objectForKey:kEventDateKey]]];
+        _ticketOnSaleDate = [self dateFromDateString:[self sanitizedString:[dictionary objectForKey:kEventOnSaleDateKey]]];
+        _facebookRSVPURL = [NSURL URLWithString:[self sanitizedString:[dictionary objectForKey:kEventFacebookURLKey]]];
+        _ticketURL = [NSURL URLWithString:[self sanitizedString:[dictionary objectForKey:kEventTicketURLKey]]];
         
         // Parse the BITArtist objects out of the JSON array
         NSArray *artistDictionaries = [dictionary objectForKey:kEventArtistsKey];
@@ -54,6 +54,16 @@ static const NSString *kEventVenueKey = @"venue";
     }
     
     return self;
+}
+
+// Ensures that a string from the JSON is not an instance of NSNull
+- (NSString *)sanitizedString:(NSString *)string
+{
+    if ((id)string == [NSNull null]) {
+        return nil;
+    } else {
+        return string;
+    }
 }
 
 // This method takes the formatted date strings from the json and converts them into NSDate

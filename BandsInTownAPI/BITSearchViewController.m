@@ -61,9 +61,16 @@
         [BITRequestManager sendRequest:request
                  withCompletionHandler:^(BOOL success, BITResponse *response, NSError *error) {
                      if (success) {
-                         BITArtist *artist = [response artist];
-                         [self performSegueWithIdentifier:@"ArtistDetailSegue"
-                                                   sender:artist];
+                         if ([request isArtistRequest]) {
+                             BITArtist *artist = [response artist];
+                             [self performSegueWithIdentifier:@"ArtistDetailSegue"
+                                                       sender:artist];
+                         } else {
+                             NSArray *events = response.events;
+                             for (BITEvent *event in events) {
+                                 NSLog(@"%@", event.title);
+                             }
+                         }
                      } else {
                          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                                          message:error.localizedDescription
@@ -96,8 +103,8 @@
 - (BITLocation *)searchLocation
 {
     if ([_locationTypeSegmentedControl selectedSegmentIndex] == 0) {
-        return [BITLocation locationWithPrimaryString:_locationTextField.text
-                                                    andSecondaryString:nil];
+        return [BITLocation locationWithPrimaryString:_cityTextField.text
+                                                    andSecondaryString:_stateTextField.text];
     } else {
         return [BITLocation currentLocation];
     }
@@ -196,9 +203,11 @@
 - (IBAction)locationSettingValueChanged:(id)sender
 {
     if ([_locationTypeSegmentedControl selectedSegmentIndex] == 1) {
-        [_locationTextField setEnabled:NO];
+        [_cityTextField setEnabled:NO];
+        [_stateTextField setEnabled:NO];
     } else {
-        [_locationTextField setEnabled:YES];
+        [_cityTextField setEnabled:YES];
+        [_cityTextField setEnabled:NO];
     }
 }
 

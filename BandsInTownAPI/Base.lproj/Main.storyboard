@@ -71,7 +71,7 @@
                                 </connections>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A6u-CI-nql">
-                                <rect key="frame" x="20" y="238" width="280" height="29"/>
+                                <rect key="frame" x="20" y="272" width="280" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Name"/>
@@ -81,7 +81,7 @@
                                     <action selector="locationSettingValueChanged:" destination="dqp-jD-Wlb" eventType="valueChanged" id="464-mR-yJi"/>
                                 </connections>
                             </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CLj-JF-NKq">
+                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City/Region" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CLj-JF-NKq">
                                 <rect key="frame" x="20" y="200" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -91,31 +91,31 @@
                                 </connections>
                             </textField>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="5" maxValue="150" translatesAutoresizingMaskIntoConstraints="NO" id="4ba-ia-wRc">
-                                <rect key="frame" x="18" y="300" width="284" height="34"/>
+                                <rect key="frame" x="18" y="334" width="284" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="sliderValueChanged:" destination="dqp-jD-Wlb" eventType="valueChanged" id="D1o-LS-NsM"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search Radius" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7q-1T-9Rk">
-                                <rect key="frame" x="20" y="280" width="112" height="21"/>
+                                <rect key="frame" x="20" y="314" width="112" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsv-sw-zIn">
-                                <rect key="frame" x="194" y="280" width="106" height="21"/>
+                                <rect key="frame" x="194" y="314" width="106" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="krv-L6-qTc">
-                                <rect key="frame" x="251" y="346" width="51" height="31"/>
+                                <rect key="frame" x="251" y="380" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Include Recommendations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bC9-dx-cV9">
-                                <rect key="frame" x="20" y="351" width="206" height="21"/>
+                                <rect key="frame" x="20" y="385" width="206" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -148,6 +148,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </data>
                                 </timeZone>
                             </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State/Country" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gEK-R9-tZ2">
+                                <rect key="frame" x="20" y="234" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -160,15 +166,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </navigationItem>
                     <connections>
                         <outlet property="artistTextField" destination="pgU-Vb-4VH" id="DX9-WK-FlD"/>
+                        <outlet property="cityTextField" destination="CLj-JF-NKq" id="43R-4n-3Oh"/>
                         <outlet property="datePicker" destination="GUp-O2-GSx" id="TMR-Wh-2EB"/>
                         <outlet property="dateTypeSegmentedControl" destination="PLI-xo-kNN" id="2qh-cT-UuJ"/>
                         <outlet property="endDateTextField" destination="7n0-FA-vhD" id="O1Y-SD-5QW"/>
                         <outlet property="includeRecommendationsSwitch" destination="krv-L6-qTc" id="SSk-KK-UcH"/>
-                        <outlet property="locationTextField" destination="CLj-JF-NKq" id="Rir-xn-pxg"/>
                         <outlet property="locationTypeSegmentedControl" destination="A6u-CI-nql" id="Bpj-BL-OVB"/>
                         <outlet property="searchRadiusSlider" destination="4ba-ia-wRc" id="nq4-tv-jIe"/>
                         <outlet property="sliderValueLabel" destination="vsv-sw-zIn" id="vc3-gs-ehx"/>
                         <outlet property="startDateTextField" destination="P8a-dU-0qn" id="qGH-Qf-0OR"/>
+                        <outlet property="stateTextField" destination="gEK-R9-tZ2" id="LCN-Il-byr"/>
                         <segue destination="3R0-o1-GYl" kind="push" identifier="ArtistDetailSegue" id="OcK-JT-soG"/>
                         <segue destination="gdx-2J-bJ2" kind="push" id="IFA-ja-Lup"/>
                     </connections>

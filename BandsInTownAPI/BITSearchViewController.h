@@ -23,7 +23,8 @@ NS_ENUM(NSInteger, TextFieldTag) {
 @property (weak, nonatomic) IBOutlet UITextField *endDateTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *dateTypeSegmentedControl;
 
-@property (weak, nonatomic) IBOutlet UITextField *locationTextField;
+@property (weak, nonatomic) IBOutlet UITextField *cityTextField;
+@property (weak, nonatomic) IBOutlet UITextField *stateTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *locationTypeSegmentedControl;
 
 @property (weak, nonatomic) IBOutlet UISlider *searchRadiusSlider;
