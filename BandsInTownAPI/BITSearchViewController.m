@@ -13,6 +13,9 @@
 
 @interface BITSearchViewController () {
     UITapGestureRecognizer *_keyboardDismissGesture;
+    
+    NSDate *_startDate;
+    NSDate *_endDate;
 }
 
 @end
@@ -49,7 +52,12 @@
 - (IBAction)search:(id)sender
 {
     if (![_artistTextField.text isEqualToString:@""]) {
-        BITRequest *request = [BITRequest requestWithArtist:_artistTextField.text];
+        BITRequest *request = [BITRequest requestWithArtist:_artistTextField.text
+                                                  dateRange:[self searchDateRange]
+                                                   location:[self searchLocation]
+                                                     radius:[NSNumber numberWithDouble:_searchRadiusSlider.value]
+                                                   onlyRecs:_includeRecommendationsSwitch.on];
+        
         [BITRequestManager sendRequest:request
                  withCompletionHandler:^(BOOL success, BITResponse *response, NSError *error) {
                      if (success) {
@@ -81,6 +89,29 @@
     if ([segue.identifier isEqualToString:@"ArtistDetailSegue"]) {
         BITArtistViewController *artistVC = [segue destinationViewController];
         [artistVC setArtist:(BITArtist *)sender];
+    }
+}
+
+#pragma mark - Search Request Values
+- (BITLocation *)searchLocation
+{
+    if ([_locationTypeSegmentedControl selectedSegmentIndex] == 0) {
+        return [BITLocation locationWithPrimaryString:_locationTextField.text
+                                                    andSecondaryString:nil];
+    } else {
+        return [BITLocation currentLocation];
+    }
+}
+
+- (BITDateRange *)searchDateRange
+{
+    if ([_dateTypeSegmentedControl selectedSegmentIndex] == 1) {
+        return [BITDateRange upcomingEvents];
+    } else if ([_dateTypeSegmentedControl selectedSegmentIndex] == 2) {
+        return [BITDateRange allEvents];
+    } else {
+        return [[BITDateRange alloc] initWithStartDate:_startDate
+                                            andEndDate:_endDate];
     }
 }
 
@@ -146,7 +177,15 @@
 {
     if ([_startDateTextField isFirstResponder]) {
         [_startDateTextField setText:[self stringForDate:_datePicker.date]];
+        if (!_startDate) {
+            _startDate = [[NSDate alloc] init];
+        }
+        _startDate = _datePicker.date;
     } else if ([_endDateTextField isFirstResponder]) {
+        if (!_endDate) {
+            _endDate = [[NSDate alloc] init];
+        }
+        _endDate = _datePicker.date;
         [_endDateTextField setText:[self stringForDate:_datePicker.date]];
     }
     

@@ -11,6 +11,7 @@
 #import <JSONKit/JSONKit.h>
 
 #import "BITArtist.h"
+#import "BITEvent.h"
 #import "BITAuthManager.h"
 #import "BITRequest.h"
 #import "BITResponse.h"
@@ -77,8 +78,14 @@
 // Return: NSArray
 + (NSArray *)eventsFromData:(NSData *)data
 {
-    NSDictionary *jsonDictionary = [data objectFromJSONData];
-    if (jsonDictionary && (id)jsonDictionary != [NSNull null]) {
+    NSArray *jsonArray = [data objectFromJSONData];
+    if (jsonArray && (id)jsonArray != [NSNull null]) {
+        NSMutableArray *events = [NSMutableArray array];
+        for (NSDictionary *eventDictionary in jsonArray) {
+            BITEvent *event = [[BITEvent alloc] initWithDictionary:eventDictionary];
+            [events addObject:event];
+        }
+        return [NSArray arrayWithArray:events];
     }
     return nil;
 }

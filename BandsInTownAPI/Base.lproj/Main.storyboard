@@ -161,7 +161,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <connections>
                         <outlet property="artistTextField" destination="pgU-Vb-4VH" id="DX9-WK-FlD"/>
                         <outlet property="datePicker" destination="GUp-O2-GSx" id="TMR-Wh-2EB"/>
-                        <outlet property="dateTypeSegmentedControl" destination="A6u-CI-nql" id="bUQ-9s-r3T"/>
+                        <outlet property="dateTypeSegmentedControl" destination="PLI-xo-kNN" id="2qh-cT-UuJ"/>
                         <outlet property="endDateTextField" destination="7n0-FA-vhD" id="O1Y-SD-5QW"/>
                         <outlet property="includeRecommendationsSwitch" destination="krv-L6-qTc" id="SSk-KK-UcH"/>
                         <outlet property="locationTextField" destination="CLj-JF-NKq" id="Rir-xn-pxg"/>

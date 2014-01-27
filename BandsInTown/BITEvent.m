@@ -34,11 +34,11 @@ static const NSString *kEventVenueKey = @"venue";
         _title = [dictionary objectForKey:kEventTitleKey];
         _eventDate = [self dateFromDateString:[dictionary objectForKey:kEventDateKey]];
         _location = [dictionary objectForKey:kEventFormattedLocationKey];
-        _ticketURL = [NSURL URLWithString:[dictionary objectForKey:kEventTicketURLKey]];
+        //_ticketURL = [NSURL URLWithString:[dictionary objectForKey:kEventTicketURLKey]];
         _ticketType = [dictionary objectForKey:kEventTicketTypeKey];
         _ticketStatus = [dictionary objectForKey:kEventTicketStatusKey];
-        _ticketOnSaleDate = [self dateFromDateString:[dictionary objectForKey:kEventOnSaleDateKey]];
-        _facebookRSVPURL = [NSURL URLWithString:[dictionary objectForKey:kEventFacebookURLKey]];
+        //_ticketOnSaleDate = [self dateFromDateString:[dictionary objectForKey:kEventOnSaleDateKey]];
+        //_facebookRSVPURL = [NSURL URLWithString:[dictionary objectForKey:kEventFacebookURLKey]];
         _description = [dictionary objectForKey:kEventDescriptionKey];
         
         // Parse the BITArtist objects out of the JSON array
