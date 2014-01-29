@@ -92,14 +92,15 @@ NSString * const apiVersion = @"2.0";
                              [_dates string]];
         }
         
-        if (_location) {
+        if (![_location.string isEqualToString:@""]) {
             requestString = [requestString stringByAppendingFormat:@"&location=%@",
                              [_location string]];
-        }
-        
-        if (_radius) {
-            requestString = [requestString stringByAppendingFormat:@"&radius=%@",
-                             [NSString stringWithFormat:@"%@", _radius]];
+            
+            // pre-req for radius is a valid location
+            if (_radius) {
+                requestString = [requestString stringByAppendingFormat:@"&radius=%@",
+                                 [NSString stringWithFormat:@"%@", _radius]];
+            }
         }
         
         if (_onlyRecs) {

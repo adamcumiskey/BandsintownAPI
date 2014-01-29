@@ -65,8 +65,12 @@
 - (id)initWithStartDate:(NSDate *)startDate
 {
     if (self = [super init]) {
-        _startDate = startDate;
-        _type = kDatesAfter;
+        if (startDate) {
+            _startDate = startDate;
+            _type = kDatesAfter;
+        } else {
+            _type = kAllDates;
+        }
     }
     return self;
 }
@@ -75,9 +79,13 @@
              andEndDate:(NSDate *)endDate
 {
     if (self = [super init]) {
-        _startDate = startDate;
-        _endDate = endDate;
-        _type = kDatesInRange;
+        if (startDate && endDate) {
+            _startDate = startDate;
+            _endDate = endDate;
+            _type = kDatesInRange;
+        } else {
+            _type = kAllDates;
+        }
     }
     return self;
 }

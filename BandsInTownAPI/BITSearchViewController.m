@@ -104,7 +104,7 @@
 {
     if ([_locationTypeSegmentedControl selectedSegmentIndex] == 0) {
         return [BITLocation locationWithPrimaryString:_cityTextField.text
-                                                    andSecondaryString:_stateTextField.text];
+                                   andSecondaryString:_stateTextField.text];
     } else {
         return [BITLocation currentLocation];
     }
@@ -117,6 +117,13 @@
     } else if ([_dateTypeSegmentedControl selectedSegmentIndex] == 2) {
         return [BITDateRange allEvents];
     } else {
+        if (_startDateTextField.text == nil) {
+            _startDate = nil;
+        }
+        if (_endDateTextField.text == nil) {
+            _endDate = nil;
+        }
+        
         return [[BITDateRange alloc] initWithStartDate:_startDate
                                             andEndDate:_endDate];
     }
