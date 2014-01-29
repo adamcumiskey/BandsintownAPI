@@ -70,7 +70,7 @@ static const NSString *kEventVenueKey = @"venue";
 - (NSDate *)dateFromDateString:(NSString *)dateString
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-mm-dd'T'hh:mm:ss"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'hh:mm:ss"];
     
     return [dateFormatter dateFromString:dateString];
 }
