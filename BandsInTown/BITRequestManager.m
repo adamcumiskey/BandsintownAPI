@@ -75,7 +75,7 @@
         if (errors) {
             NSError *error = [[NSError alloc] initWithDomain:@"BITRequestManager"
                                                         code:1
-                                                    userInfo:@{NSLocalizedDescriptionKey: [errors objectAtIndex:0]}];
+                                                    userInfo:@{NSLocalizedDescriptionKey: [errors firstObject]}];
             return error;
         }
     }

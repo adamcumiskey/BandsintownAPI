@@ -82,7 +82,7 @@ NSString * const apiVersion = @"2.0";
                          apiVersion,
                          [BITAuthManager appID]];
     } else {
-        requestString = [apiURL stringByAppendingFormat:@"%@/events.json?api_version=%@&app_id=%@",
+        requestString = [apiURL stringByAppendingFormat:@"%@/events/search.json?api_version=%@&app_id=%@",
                          _artistName,
                          apiVersion,
                          [BITAuthManager appID]];
