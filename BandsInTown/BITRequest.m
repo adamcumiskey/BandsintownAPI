@@ -82,7 +82,7 @@ NSString * const apiVersion = @"2.0";
                          apiVersion,
                          [BITAuthManager appID]];
     } else {
-        requestString = [apiURL stringByAppendingFormat:@"%@/events.json?api_version=%@&app_id=%@",
+        requestString = [apiURL stringByAppendingFormat:@"%@/events/search.json?api_version=%@&app_id=%@",
                          _artistName,
                          apiVersion,
                          [BITAuthManager appID]];
@@ -92,14 +92,15 @@ NSString * const apiVersion = @"2.0";
                              [_dates string]];
         }
         
-        if (_location) {
+        if (![_location.string isEqualToString:@""]) {
             requestString = [requestString stringByAppendingFormat:@"&location=%@",
                              [_location string]];
-        }
-        
-        if (_radius) {
-            requestString = [requestString stringByAppendingFormat:@"&radius=%@",
-                             [NSString stringWithFormat:@"%@", _radius]];
+            
+            // pre-req for radius is a valid location
+            if (_radius) {
+                requestString = [requestString stringByAppendingFormat:@"&radius=%@",
+                                 [NSString stringWithFormat:@"%@", _radius]];
+            }
         }
         
         if (_onlyRecs) {

@@ -36,26 +36,50 @@
                                    completionHandler(NO, nil, nil);
                                    
                                } else {
-                                   BITResponse *response;
+                                   NSDictionary *jsonDictionary = [data objectFromJSONData];
+                                   NSError *jsonError = nil;
+                                   if ([jsonDictionary isKindOfClass:[NSDictionary class]]) {
+                                       jsonError = [self errorsForJSON:jsonDictionary];
+                                   }
                                    
-                                   // If the request is for an artist, make an artist response
-                                   if ([request isArtistRequest]) {
-                                       BITArtist *artist = [self artistFromData:data];
-                                       if (artist) {
-                                           response = [[BITResponse alloc] initWithArtist:artist];
+                                   if (!jsonError) {
+                                       BITResponse *response;
+                                       // If the request is for an artist, make an artist response
+                                       if ([request isArtistRequest]) {
+                                           BITArtist *artist = [self artistFromData:data];
+                                           if (artist) {
+                                               response = [[BITResponse alloc] initWithArtist:artist];
+                                           }
+                                       } else {
+                                           NSArray *events = [self eventsFromData:data];
+                                           if (events) {
+                                               response = [[BITResponse alloc] initWithEvents:events];
+                                           }
+                                       }
+                                       
+                                       if (response) {
+                                           completionHandler(YES, response, nil);
                                        }
                                    } else {
-                                       NSArray *events = [self eventsFromData:data];
-                                       if (events) {
-                                           response = [[BITResponse alloc] initWithEvents:events];
-                                       }
+                                       completionHandler(NO, nil, jsonError);
                                    }
-                                   
-                                   if (response) {
-                                       completionHandler(YES, response, nil);
-                                   }
+
                                }
                            }];
+}
+
++ (NSError *)errorsForJSON:(NSDictionary *)jsonDictionary
+{
+    if (jsonDictionary && (id)jsonDictionary != [NSNull null]) {
+        NSArray *errors = [jsonDictionary objectForKey:@"errors"];
+        if (errors) {
+            NSError *error = [[NSError alloc] initWithDomain:@"BITRequestManager"
+                                                        code:1
+                                                    userInfo:@{NSLocalizedDescriptionKey: [errors firstObject]}];
+            return error;
+        }
+    }
+    return nil;
 }
 
 #pragma mark - Private Methods
