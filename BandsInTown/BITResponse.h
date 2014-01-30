@@ -12,10 +12,11 @@
 
 @interface BITResponse : NSObject
 
+@property (strong, nonatomic) NSString *rawResponse;
 @property (strong, nonatomic) BITArtist *artist;
 @property (strong, nonatomic) NSArray *events;
 
-- (id)initWithArtist:(BITArtist *)artist;
-- (id)initWithEvents:(NSArray *)events;
+- (id)initWithArtist:(BITArtist *)artist fromResponse:(NSString *)rawResponse;
+- (id)initWithEvents:(NSArray *)events fromResponse:(NSString *)rawResponse;
 
 @end

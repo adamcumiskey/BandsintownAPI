@@ -10,19 +10,21 @@
 
 @implementation BITResponse
 
-- (id)initWithArtist:(BITArtist *)artist
+- (id)initWithArtist:(BITArtist *)artist fromResponse:(NSString *)rawResponse
 {
     if (self = [super init]) {
         _artist = artist;
+		_rawResponse = rawResponse;
     }
     
     return self;
 }
 
-- (id)initWithEvents:(NSArray *)events
+- (id)initWithEvents:(NSArray *)events fromResponse:(NSString *)rawResponse
 {
     if (self = [super init]) {
         _events = events;
+		_rawResponse = rawResponse;
     }
     
     return self;
