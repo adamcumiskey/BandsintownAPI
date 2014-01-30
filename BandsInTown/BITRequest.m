@@ -111,58 +111,55 @@ NSString * const apiVersion = @"2.0";
                                        radius:nil];
 }
 
-#pragma mark - Public Methods
-/** Generate the URLRequest from the object */
-- (NSMutableURLRequest *)urlRequest
+#pragma mark - Request customization
+- (void)setSearchLocation:(BITLocation *)location
+                andRadius:(NSNumber *)radius
 {
-    NSMutableURLRequest *request;
-//    NSString *requestString;
-//    
-//    _artistName = [_artistName stringByReplacingOccurrencesOfString:@"/"
-//                                                         withString:@"%2F"];
-//    _artistName = [_artistName stringByReplacingOccurrencesOfString:@"?"
-//                                                         withString:@"%3F"];
-//    
-//    if ([self isArtistRequest]) {
-//        requestString = [apiURL stringByAppendingFormat:@"%@.json?api_version=%@&app_id=%@",
-//                         _artistName,
-//                         apiVersion,
-//                         [BITAuthManager appID]];
-//    } else {
-//        requestString = [apiURL stringByAppendingFormat:@"%@/events/search.json?api_version=%@&app_id=%@",
-//                         _artistName,
-//                         apiVersion,
-//                         [BITAuthManager appID]];
-//        
-//        if (_dates) {
-//            requestString = [requestString stringByAppendingFormat:@"&date=%@",
-//                             [_dates string]];
-//        }
-//        
-//        if (![_location.string isEqualToString:@""]) {
-//            requestString = [requestString stringByAppendingFormat:@"&location=%@",
-//                             [_location string]];
-//            
-//            // pre-req for radius is a valid location
-//            if (_radius) {
-//                requestString = [requestString stringByAppendingFormat:@"&radius=%@",
-//                                 [NSString stringWithFormat:@"%@", _radius]];
-//            }
-//        }
-//        
-//        if (_onlyRecommendations) {
-//            requestString = [requestString stringByAppendingString:@"&only_recs=true"];
-//        }
-//    }
-//    
-//    requestString = [requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    
-//    NSLog(@"Request String: %@", requestString);
-//    
-//    request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
-    return request;
+    _location = location;
+    _radius = radius;
+}
+
+- (void)includeRecommendations:(BOOL)exludeArtistFromResults
+{
+    _requestType = kBITRecommendationRequest;
+    _onlyRecommendations = exludeArtistFromResults;
+}
+
+#pragma mark - Public Methods
+- (NSURLRequest *)urlRequest
+{
+    switch ([self requestType]) {
+        case kBITArtistRequest:
+            return [self aritstRequestURL];
+            break;
+            
+        case kBITEventRequest:
+            return [self eventRequestURL];
+            break;
+            
+        case kBITRecommendationRequest:
+            return [self recommendationRequestURL];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - NSURLRequestConstruction methods (Private)
+- (NSURLRequest *)aritstRequestURL
+{
+    
+}
+
+- (NSURLRequest *)eventRequestURL
+{
+    
+}
+
+- (NSURLRequest *)recommendationRequestURL
+{
+    
+}
 
 @end
