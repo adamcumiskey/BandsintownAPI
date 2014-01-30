@@ -30,20 +30,61 @@ static const NSString *kUpcomingEventsCountKey = @"upcoming_events_count";
 
 @implementation BITArtist
 
+#pragma mark - Public Initializers
 - (id)initWithDictionary:(NSDictionary *)dictonary
 {
     if (self = [super init]) {
-        _name = [dictonary objectForKey:kArtistNameKey];
-        _mbid = [dictonary objectForKey:kMusicBrainzIDKey];
-        _imageURL = [NSURL URLWithString:[dictonary objectForKey:kArtistImageURLKey]];
-        _thumbURL = [NSURL URLWithString:[dictonary objectForKey:kArtistThumbURLKey]];
-        _facebookTourDatesURLString = [dictonary objectForKey:kFacebookTourDatesURLKey];
+        _name = [self sanitizedString:[dictonary objectForKey:kArtistNameKey]];
+        _mbid = [self sanitizedString:[dictonary objectForKey:kMusicBrainzIDKey]];
+        _imageURL = [NSURL URLWithString:[self sanitizedString:[dictonary objectForKey:kArtistImageURLKey]]];
+        _thumbURL = [NSURL URLWithString:[self sanitizedString:[dictonary objectForKey:kArtistThumbURLKey]]];
+        _facebookTourDatesURL = [NSURL URLWithString:[self sanitizedString:[dictonary objectForKey:kFacebookTourDatesURLKey]]];
         _numberOfUpcomingEvents = [dictonary objectForKey:kUpcomingEventsCountKey];
     }
-
     return self;
 }
 
+- (id)initWithName:(NSString *)name
+{
+    if (self = [super init]) {
+        _name = name;
+    }
+    return self;
+}
+
+- (id)initWithMusicBrainzID:(NSString *)mbid
+{
+    if (self = [super init]) {
+        _mbid = mbid;
+    }
+    return self;
+}
+
+- (id)initWithFacebookID:(NSString *)fbid
+{
+    if (self = [super init]) {
+        _fbid = fbid;
+    }
+    return self;
+}
+
+#pragma mark - Class initializers
++ (instancetype)artistNamed:(NSString *)artistName
+{
+    return [[BITArtist alloc] initWithName:artistName];
+}
+
++ (instancetype)artistForMusicBrainzID:(NSString *)mbid
+{
+    return [[BITArtist alloc] initWithMusicBrainzID:mbid];
+}
+
++ (instancetype)artistForFacebookID:(NSString *)fbid
+{
+    return [[BITArtist alloc] initWithFacebookID:fbid];
+}
+
+#pragma mark - Public methods
 - (void)requestImageWithCompletionHandler:(artistImageCompletionHandler)completionHandler
 {
     NSURLRequest *artistImageRequest = [NSURLRequest requestWithURL:_imageURL];
@@ -59,6 +100,17 @@ static const NSString *kUpcomingEventsCountKey = @"upcoming_events_count";
                                    completionHandler(NO, nil, connectionError);
                                }
                            }];
+}
+
+#pragma mark - Private methods
+// Ensures that a string from the JSON is not an instance of NSNull
+- (NSString *)sanitizedString:(NSString *)string
+{
+    if ((id)string == [NSNull null]) {
+        return nil;
+    } else {
+        return string;
+    }
 }
 
 @end

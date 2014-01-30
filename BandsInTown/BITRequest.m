@@ -33,34 +33,8 @@ NSString * const apiVersion = @"2.0";
 @implementation BITRequest
 
 #pragma mark - Initializers
-+ (id)requestWithArtist:(NSString *)artist
-{
-    return [[BITRequest alloc] initWithArtist:artist];
-}
-
-+ (id)requestWithArtist:(NSString *)artist
-              dateRange:(BITDateRange *)dateRange
-               location:(BITLocation *)location
-                 radius:(NSNumber *)radius
-               onlyRecs:(BOOL)onlyRecs
-{
-    return [[BITRequest alloc] initWithArtist:artist
-                                    dateRange:dateRange
-                                     location:location
-                                       radius:radius
-                                     onlyRecs:onlyRecs];
-}
-
 - (id)initWithArtist:(NSString *)artist
-{
-    if (self = [super init]) {
-        _artistName = artist;
-    }
-    
-    return self;
-}
-
-- (id)initWithArtist:(NSString *)artist
+         requestType:(BITRequestType)requestType
            dateRange:(BITDateRange *)dateRange
             location:(BITLocation *)location
               radius:(NSNumber *)radius
@@ -68,10 +42,11 @@ NSString * const apiVersion = @"2.0";
 {
     if (self = [super init]) {
         _artistName = artist;
+        _requestType = requestType;
         _dates = dateRange;
         _location = location;
         _radius = radius;
-        _onlyRecs = onlyRecs;
+        _onlyRecommendations = onlyRecs;
     }
     
     return self;
@@ -116,7 +91,7 @@ NSString * const apiVersion = @"2.0";
             }
         }
         
-        if (_onlyRecs) {
+        if (_onlyRecommendations) {
             requestString = [requestString stringByAppendingString:@"&only_recs=true"];
         }
     }
@@ -127,20 +102,6 @@ NSString * const apiVersion = @"2.0";
     
     request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
     return request;
-}
-
-/** Checks to see if the request is for an artist only */
-// Return: BOOL
-- (BOOL)isArtistRequest
-{
-    if (!_dates &&
-        !_location &&
-        !_radius &&
-        !_onlyRecs) {
-        return YES;
-    } else {
-        return NO;
-    }
 }
 
 @end

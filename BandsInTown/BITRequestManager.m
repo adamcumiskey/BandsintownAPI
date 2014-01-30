@@ -61,12 +61,14 @@
                                        if ([request isArtistRequest]) {
                                            BITArtist *artist = [self artistFromData:data];
                                            if (artist) {
-                                               response = [[BITResponse alloc] initWithArtist:artist fromResponse:[jsonDictionary JSONString]];
+                                               response = [[BITResponse alloc] initWithArtist:artist
+                                                                                 fromResponse:[jsonDictionary JSONString]];
                                            }
                                        } else {
                                            NSArray *events = [self eventsFromData:data];
                                            if (events) {
-                                               response = [[BITResponse alloc] initWithEvents:events fromResponse:[jsonDictionary JSONString]];
+                                               response = [[BITResponse alloc] initWithEvents:events
+                                                                                 fromResponse:[events JSONString]];
                                            }
                                        }
                                        
