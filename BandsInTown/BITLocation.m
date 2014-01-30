@@ -44,31 +44,6 @@
     }
 }
 
-#pragma mark - Class Initializers
-+ (id)locationWithPrimaryString:(NSString *)primaryString
-             andSecondaryString:(NSString *)secondaryString
-{
-    return [[BITLocation alloc] initWithPrimaryString:primaryString
-                                   andSecondaryString:secondaryString];
-}
-
-+ (id)locationWithCoordinate:(CLLocationCoordinate2D)coordinate
-{
-    return [[BITLocation alloc] initWithCoordinate:coordinate];
-}
-
-+ (id)locationWithLatitude:(double)latitude
-              andLongitude:(double)longitude
-{
-    return [[BITLocation alloc] initWithLatitude:latitude
-                                    andLongitude:longitude];
-}
-
-+ (id)currentLocation
-{
-    return [[BITLocation alloc] initForCurrentLocation];
-}
-
 #pragma mark - Instance Initializers
 - (id)initWithPrimaryString:(NSString *)primaryString
          andSecondaryString:(NSString *)secondaryString
@@ -105,7 +80,7 @@
     return self;
 }
 
-- (id)initForCurrentLocation
+- (instancetype)initForCurrentLocation
 {
     if (self = [super init]) {
         // Strong feeling that this won't work
@@ -119,5 +94,32 @@
     
     return self;
 }
+
+#pragma mark - Class Initializers
++ (instancetype)locationWithPrimaryString:(NSString *)primaryString
+             andSecondaryString:(NSString *)secondaryString
+{
+    return [[BITLocation alloc] initWithPrimaryString:primaryString
+                                   andSecondaryString:secondaryString];
+}
+
++ (instancetype)locationWithCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    return [[BITLocation alloc] initWithCoordinate:coordinate];
+}
+
++ (instancetype)locationWithLatitude:(double)latitude
+              andLongitude:(double)longitude
+{
+    return [[BITLocation alloc] initWithLatitude:latitude
+                                    andLongitude:longitude];
+}
+
++ (instancetype)currentLocation
+{
+    return [[BITLocation alloc] initForCurrentLocation];
+}
+
+
 
 @end

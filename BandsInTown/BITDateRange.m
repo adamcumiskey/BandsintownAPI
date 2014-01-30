@@ -51,29 +51,6 @@
     }
 }
 
-#pragma mark - Public class initializers
-+ (id)dateRangeWithStartDate:(NSDate *)startDate
-{
-    return [[BITDateRange alloc] initWithStartDate:startDate];
-}
-
-+ (id)dateRangeWithStartDate:(NSDate *)startDate
-                  andEndDate:(NSDate *)endDate
-{
-    return [[BITDateRange alloc] initWithStartDate:startDate
-                                        andEndDate:endDate];
-}
-
-+ (id)upcomingEvents
-{
-    return [[BITDateRange alloc] initForUpcomingEvents];
-}
-
-+ (id)allEvents
-{
-    return [[BITDateRange alloc] initForAllEvents];
-}
-
 #pragma mark - Public Init Methods
 - (id)initWithStartDate:(NSDate *)startDate
 {
@@ -117,6 +94,29 @@
         _type = kAllDates;
     }
     return self;
+}
+
+#pragma mark - Public class initializers
++ (instancetype)dateRangeWithStartDate:(NSDate *)startDate
+{
+    return [[BITDateRange alloc] initWithStartDate:startDate];
+}
+
++ (instancetype)dateRangeWithStartDate:(NSDate *)startDate
+                  andEndDate:(NSDate *)endDate
+{
+    return [[BITDateRange alloc] initWithStartDate:startDate
+                                        andEndDate:endDate];
+}
+
++ (instancetype)upcomingEvents
+{
+    return [[BITDateRange alloc] initForUpcomingEvents];
+}
+
++ (instancetype)allEvents
+{
+    return [[BITDateRange alloc] initForAllEvents];
 }
 
 #pragma mark - Private Methods

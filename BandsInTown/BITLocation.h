@@ -38,20 +38,20 @@ typedef NS_ENUM(NSInteger, BITLocationType) {
 // String to used to represent the BITLocation in the request URL
 - (NSString *)string;
 
-// Class initializers
-+ (id)locationWithPrimaryString:(NSString *)primaryString
-             andSecondaryString:(NSString *)secondaryString;
-+ (id)locationWithCoordinate:(CLLocationCoordinate2D)coordinate;
-+ (id)locationWithLatitude:(double)latitude
-           andLongitude:(double)longitude;
-+ (id)currentLocation;
-
 // Instance initializers
 - (id)initWithPrimaryString:(NSString *)primaryString
-             andSecondaryString:(NSString *)secondaryString;
+         andSecondaryString:(NSString *)secondaryString;
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
 - (id)initWithLatitude:(double)latitude
-              andLongitude:(double)longitude;
+          andLongitude:(double)longitude;
 - (id)initForCurrentLocation;
+
+// Class initializers
++ (instancetype)locationWithPrimaryString:(NSString *)primaryString
+                       andSecondaryString:(NSString *)secondaryString;
++ (instancetype)locationWithCoordinate:(CLLocationCoordinate2D)coordinate;
++ (instancetype)locationWithLatitude:(double)latitude
+                        andLongitude:(double)longitude;
++ (instancetype)currentLocation;
 
 @end

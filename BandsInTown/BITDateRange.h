@@ -37,18 +37,18 @@ typedef NS_ENUM(NSInteger, BITDateRangeType) {
 // Returns the string representing this date range in the request URL
 - (NSString *)string;
 
-// Class initializers
-+ (id)dateRangeWithStartDate:(NSDate *)startDate;
-+ (id)dateRangeWithStartDate:(NSDate *)startDate
-             andEndDate:(NSDate *)endDate;
-+ (id)upcomingEvents;
-+ (id)allEvents;
-
 // Instance initializers
 - (id)initWithStartDate:(NSDate *)startDate;
 - (id)initWithStartDate:(NSDate *)startDate
              andEndDate:(NSDate *)endDate;
 - (id)initForUpcomingEvents;
 - (id)initForAllEvents;
+
+// Class initializers
++ (instancetype)dateRangeWithStartDate:(NSDate *)startDate;
++ (instancetype)dateRangeWithStartDate:(NSDate *)startDate
+                            andEndDate:(NSDate *)endDate;
++ (instancetype)upcomingEvents;
++ (instancetype)allEvents;
 
 @end

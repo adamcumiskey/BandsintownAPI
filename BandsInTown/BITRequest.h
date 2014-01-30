@@ -52,15 +52,15 @@ typedef NS_ENUM(NSInteger, BITRequestType) {
             onlyRecs:(BOOL)onlyRecs;
 
 // Class methods for artist requests
-+ (id)artistRequestForName:(NSString *)artist;
-+ (id)artistRequestForFacebookID:(NSString *)facebookID;
-+ (id)artistRequestForMusicBrainzID:(NSString *)mbid;
++ (instancetype)artistRequestForName:(NSString *)artist;
++ (instancetype)artistRequestForFacebookID:(NSString *)facebookID;
++ (instancetype)artistRequestForMusicBrainzID:(NSString *)mbid;
 
 // Class methods for getting events for an artist.
-+ (id)allEventsForArtist:(BITArtist *)artist;
-+ (id)upcomingEventsForArtist:(BITArtist *)artist;
-+ (id)eventsForArtist:(BITArtist *)artist
-          inDateRange:(BITDateRange *)dateRange;
++ (instancetype)allEventsForArtist:(BITArtist *)artist;
++ (instancetype)upcomingEventsForArtist:(BITArtist *)artist;
++ (instancetype)eventsForArtist:(BITArtist *)artist
+                    inDateRange:(BITDateRange *)dateRange;
 
 - (NSURLRequest *)urlRequest;
 - (BOOL)isArtistRequest;
