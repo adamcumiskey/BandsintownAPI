@@ -62,9 +62,8 @@
 
 - (IBAction)viewShows:(id)sender
 {
-    NSURL *facebookURL = [NSURL URLWithString:_artist.facebookTourDatesURLString];
-    if ([[UIApplication sharedApplication] canOpenURL:facebookURL]) {
-        [[UIApplication sharedApplication] openURL:facebookURL];
+    if ([[UIApplication sharedApplication] canOpenURL:_artist.facebookTourDatesURL]) {
+        [[UIApplication sharedApplication] openURL:_artist.facebookTourDatesURL];
     }
 }
 

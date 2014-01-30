@@ -58,7 +58,7 @@
                                    if (!jsonError) {
                                        BITResponse *response;
                                        // If the request is for an artist, make an artist response
-                                       if ([request isArtistRequest]) {
+                                       if ([request requestType] == kBITArtistRequest) {
                                            BITArtist *artist = [self artistFromData:data];
                                            if (artist) {
                                                response = [[BITResponse alloc] initWithArtist:artist

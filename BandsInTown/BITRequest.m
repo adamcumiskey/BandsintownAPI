@@ -26,30 +26,89 @@
 
 #import "BITDateRange.h"
 #import "BITLocation.h"
+#import "BITArtist.h"
 
 NSString * const apiURL = @"http://api.bandsintown.com/artists/";
 NSString * const apiVersion = @"2.0";
 
 @implementation BITRequest
 
-#pragma mark - Initializers
-- (id)initWithArtist:(NSString *)artist
+#pragma mark - Base Initializers
+- (id)initWithRequestForArtist:(BITArtist *)artist
+{
+    if (self = [super init]) {
+        _artist = artist;
+        _requestType = kBITArtistRequest;
+    }
+    return self;
+}
+
+- (id)initWithArtist:(BITArtist *)artist
          requestType:(BITRequestType)requestType
            dateRange:(BITDateRange *)dateRange
             location:(BITLocation *)location
               radius:(NSNumber *)radius
-            onlyRecs:(BOOL)onlyRecs
 {
     if (self = [super init]) {
-        _artistName = artist;
+        _artist = artist;
         _requestType = requestType;
         _dates = dateRange;
         _location = location;
         _radius = radius;
-        _onlyRecommendations = onlyRecs;
     }
     
     return self;
+}
+
+#pragma mark - Class Initializers
+#pragma mark Artist Requests
++ (instancetype)artistRequestForName:(NSString *)artistName
+{
+    BITArtist *artist = [BITArtist artistNamed:artistName];
+    return [[BITRequest alloc] initWithRequestForArtist:artist];
+}
+
++ (instancetype)artistRequestForMusicBrainzID:(NSString *)mbid
+{
+    BITArtist *artist = [BITArtist artistForMusicBrainzID:mbid];
+    return [[BITRequest alloc] initWithRequestForArtist:artist];
+}
+
++ (instancetype)artistRequestForFacebookID:(NSString *)facebookID
+{
+    BITArtist *artist = [BITArtist artistForFacebookID:facebookID];
+    return [[BITRequest alloc] initWithRequestForArtist:artist];
+}
+
+#pragma mark Event Requests
++ (instancetype)allEventsForArtist:(BITArtist *)artist
+{
+    BITDateRange *dateRange = [BITDateRange allEvents];
+    return [[BITRequest alloc] initWithArtist:artist
+                                  requestType:kBITEventRequest
+                                    dateRange:dateRange
+                                     location:nil
+                                       radius:nil];
+}
+
++ (instancetype)upcomingEventsForArtist:(BITArtist *)artist
+{
+    BITDateRange *dateRange = [BITDateRange upcomingEvents];
+    return [[BITRequest alloc] initWithArtist:artist
+                                  requestType:kBITEventRequest
+                                    dateRange:dateRange
+                                     location:nil
+                                       radius:nil];
+}
+
++ (instancetype)eventsForArtist:(BITArtist *)artist
+                    inDateRange:(BITDateRange *)dateRange
+{
+    return [[BITRequest alloc] initWithArtist:artist
+                                  requestType:kBITEventRequest
+                                    dateRange:dateRange
+                                     location:nil
+                                       radius:nil];
 }
 
 #pragma mark - Public Methods
@@ -57,51 +116,53 @@ NSString * const apiVersion = @"2.0";
 - (NSMutableURLRequest *)urlRequest
 {
     NSMutableURLRequest *request;
-    NSString *requestString;
-    
-    _artistName = [_artistName stringByReplacingOccurrencesOfString:@"/"
-                                                         withString:@"%2F"];
-    _artistName = [_artistName stringByReplacingOccurrencesOfString:@"?"
-                                                         withString:@"%3F"];
-    
-    if ([self isArtistRequest]) {
-        requestString = [apiURL stringByAppendingFormat:@"%@.json?api_version=%@&app_id=%@",
-                         _artistName,
-                         apiVersion,
-                         [BITAuthManager appID]];
-    } else {
-        requestString = [apiURL stringByAppendingFormat:@"%@/events/search.json?api_version=%@&app_id=%@",
-                         _artistName,
-                         apiVersion,
-                         [BITAuthManager appID]];
-        
-        if (_dates) {
-            requestString = [requestString stringByAppendingFormat:@"&date=%@",
-                             [_dates string]];
-        }
-        
-        if (![_location.string isEqualToString:@""]) {
-            requestString = [requestString stringByAppendingFormat:@"&location=%@",
-                             [_location string]];
-            
-            // pre-req for radius is a valid location
-            if (_radius) {
-                requestString = [requestString stringByAppendingFormat:@"&radius=%@",
-                                 [NSString stringWithFormat:@"%@", _radius]];
-            }
-        }
-        
-        if (_onlyRecommendations) {
-            requestString = [requestString stringByAppendingString:@"&only_recs=true"];
-        }
-    }
-    
-    requestString = [requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    NSLog(@"Request String: %@", requestString);
-    
-    request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
+//    NSString *requestString;
+//    
+//    _artistName = [_artistName stringByReplacingOccurrencesOfString:@"/"
+//                                                         withString:@"%2F"];
+//    _artistName = [_artistName stringByReplacingOccurrencesOfString:@"?"
+//                                                         withString:@"%3F"];
+//    
+//    if ([self isArtistRequest]) {
+//        requestString = [apiURL stringByAppendingFormat:@"%@.json?api_version=%@&app_id=%@",
+//                         _artistName,
+//                         apiVersion,
+//                         [BITAuthManager appID]];
+//    } else {
+//        requestString = [apiURL stringByAppendingFormat:@"%@/events/search.json?api_version=%@&app_id=%@",
+//                         _artistName,
+//                         apiVersion,
+//                         [BITAuthManager appID]];
+//        
+//        if (_dates) {
+//            requestString = [requestString stringByAppendingFormat:@"&date=%@",
+//                             [_dates string]];
+//        }
+//        
+//        if (![_location.string isEqualToString:@""]) {
+//            requestString = [requestString stringByAppendingFormat:@"&location=%@",
+//                             [_location string]];
+//            
+//            // pre-req for radius is a valid location
+//            if (_radius) {
+//                requestString = [requestString stringByAppendingFormat:@"&radius=%@",
+//                                 [NSString stringWithFormat:@"%@", _radius]];
+//            }
+//        }
+//        
+//        if (_onlyRecommendations) {
+//            requestString = [requestString stringByAppendingString:@"&only_recs=true"];
+//        }
+//    }
+//    
+//    requestString = [requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    
+//    NSLog(@"Request String: %@", requestString);
+//    
+//    request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
     return request;
 }
+
+#pragma mark - NSURLRequestConstruction methods (Private)
 
 @end

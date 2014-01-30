@@ -64,43 +64,7 @@
 
 - (IBAction)search:(id)sender
 {
-    if (![_artistTextField.text isEqualToString:@""]) {
-        BITRequest *request = [BITRequest requestWithArtist:_artistTextField.text
-                                                  dateRange:[self searchDateRange]
-                                                   location:[self searchLocation]
-                                                     radius:[NSNumber numberWithDouble:_searchRadiusSlider.value]
-                                                   onlyRecs:_includeRecommendationsSwitch.on];
-        
-        [BITRequestManager sendRequest:request
-                 withCompletionHandler:^(BOOL success, BITResponse *response, NSError *error) {
-                     if (success) {
-                         if ([request isArtistRequest]) {
-                             BITArtist *artist = [response artist];
-                             [self performSegueWithIdentifier:@"ArtistDetailSegue"
-                                                       sender:artist];
-                         } else {
-                             NSArray *events = response.events;
-                             for (BITEvent *event in events) {
-                                 NSLog(@"%@", event.title);
-                             }
-                         }
-                     } else {
-                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                         message:error.localizedDescription
-                                                                        delegate:nil
-                                                               cancelButtonTitle:@"OK"
-                                                               otherButtonTitles:nil, nil];
-                         [alert show];
-                     }
-                 }];
-    } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"An artist is required to perform a search"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil, nil];
-        [alert show];
-    }
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue

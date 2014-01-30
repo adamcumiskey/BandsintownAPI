@@ -29,10 +29,9 @@ typedef void (^requestCompletionHandler)(BOOL success,
                                          BITResponse *response,
                                          NSError *error);
 
-
-
 @interface BITRequestManager : NSObject
 
+// Method for sending requests and recieving data back through the response.
 + (void)sendRequest:(BITRequest *)request
     withCompletionHandler:(requestCompletionHandler)completionHandler;
 

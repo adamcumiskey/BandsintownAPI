@@ -25,7 +25,6 @@ typedef NS_ENUM(NSInteger, BITRequestType) {
     kBITArtistRequest,
     kBITEventRequest,
     kBITRecommendationRequest,
-    kBITDefaultRequest
 };
 
 @class BITDateRange;
@@ -35,34 +34,47 @@ typedef NS_ENUM(NSInteger, BITRequestType) {
 @interface BITRequest : NSObject
 
 @property (nonatomic) BITRequestType requestType; // Type of request to be sent out.
-@property (strong, nonatomic) NSString *artistName; // Artist name as a string
-@property (strong, nonatomic) NSString *mbid; // Artist's Music Brainz ID
-@property (strong, nonatomic) NSString *facebookID; // Artist's FB ID
+@property (strong, nonatomic) BITArtist *artist;
 @property (strong, nonatomic) BITDateRange *dates; // Date range for event/recommendation request
 @property (strong, nonatomic) BITLocation *location; // Location for event/recommendation request
 @property (strong, nonatomic) NSNumber *radius; // Search radius from location
 @property (nonatomic) BOOL onlyRecommendations; // If the request is for recommended shows, set to YES to filter out shows from the original artist
 
 // Base initializer
+- (id)initWithRequestForArtist:(BITArtist *)artist;
 - (id)initWithArtist:(BITArtist *)artist
          requestType:(BITRequestType)requestType
            dateRange:(BITDateRange *)dateRange
             location:(BITLocation *)location
-              radius:(NSNumber *)radius
-            onlyRecs:(BOOL)onlyRecs;
+              radius:(NSNumber *)radius;
 
+// ***************************************************************************
 // Class methods for artist requests
-+ (instancetype)artistRequestForName:(NSString *)artist;
+
+// I don't recommend modifying these requests after they are created, as they
+// are designed specifically for the artist request. Changing the request type
+// to anything but kBITArtistRequest will have undefined behavior.
+// ***************************************************************************
++ (instancetype)artistRequestForName:(NSString *)artistName;
 + (instancetype)artistRequestForFacebookID:(NSString *)facebookID;
 + (instancetype)artistRequestForMusicBrainzID:(NSString *)mbid;
 
+// ***************************************************************************
 // Class methods for getting events for an artist.
+// These requests default to events only for the artist.
+
+// To get recommendations, set the requestType to kBITRecommendationRequest.
+// The onlyRecommendations BOOL can be set to YES to filter out events for the original artist.
+
+// The location and radius properties can also be set after the object is
+// instantiated to allow for searching a perticular area.
+// ***************************************************************************
 + (instancetype)allEventsForArtist:(BITArtist *)artist;
 + (instancetype)upcomingEventsForArtist:(BITArtist *)artist;
 + (instancetype)eventsForArtist:(BITArtist *)artist
                     inDateRange:(BITDateRange *)dateRange;
 
+// Returns the URLRequest for the current BITRequest object
 - (NSURLRequest *)urlRequest;
-- (BOOL)isArtistRequest;
 
 @end
