@@ -126,10 +126,29 @@ NSString *const responseFormat = @"json";
     [self setOnlyRecommendations:exludeArtistFromResults];
 }
 
+- (void)setDates:(BITDateRange *)dates
+{
+    _dates = dates;
+    
+    // Setting the dates object to an artist search changes
+    // it into a events request. Not sure I want to keep this
+    // behaviour.
+    if (_requestType == kBITArtistRequest) {
+        [self setRequestType:kBITEventsRequest];
+    }
+}
+
 - (void)setLocation:(BITLocation *)location
 {
     _location = location;
-    [self setRequestType:kBITEventSearch];
+    
+    // If a location is set, the request must be an
+    // events search or a recommendation request.
+    if ((_requestType == kBITEventsRequest ||
+        _requestType == kBITArtistRequest) &&
+        _requestType != kBITRecommendationRequest) {
+        [self setRequestType:kBITEventSearch];
+    }
 }
 
 #pragma mark - Public Methods
@@ -189,11 +208,7 @@ NSString *const responseFormat = @"json";
             break;
     }
     
-    requestString = [requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    requestString = [requestString stringByReplacingOccurrencesOfString:@"(null)"
-                                                             withString:@""];
-    NSLog(@"Request String: %@", requestString);
-    return [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
+    return [self urlRequestFromString:requestString];
 }
 
 - (NSURLRequest *)eventsRequestURL
@@ -307,7 +322,9 @@ NSString *const responseFormat = @"json";
 
 - (NSString *)radiusString
 {
-    if (_radius) {
+    // Radius parameter requires valid location
+    if (_radius &&
+        (![[[self location] string] isEqualToString:@""] && _location)) {
         return [NSString stringWithFormat:@"&radius=%@",
                 _radius];
     } else {
