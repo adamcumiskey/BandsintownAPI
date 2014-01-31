@@ -64,7 +64,13 @@
 
 - (IBAction)search:(id)sender
 {
-
+    BITRequest *request = [BITRequest artistRequestForName:_artistTextField.text];
+    [BITRequestManager sendRequest:request
+             withCompletionHandler:^(BOOL success,
+                                     BITResponse *response,
+                                     NSError *error) {
+                 NSLog(@"%@", response.rawResponse);
+             }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue

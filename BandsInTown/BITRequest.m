@@ -150,25 +150,25 @@ NSString *const responseFormat = @"json";
 #pragma mark - NSURLRequestConstruction methods (Private)
 - (NSURLRequest *)aritstRequestURL
 {
-    NSMutableString *requestString = [NSMutableString stringWithString:apiURLString];
+    NSString *requestString = [NSString stringWithString:apiURLString];
     switch ([[self artist] artistNameType]) {
         case kBITArtistNameTypeString:
-            [requestString appendFormat:@"%@.json?%@&%@",
-             [self sanitizeArtistNameString:_artist.name],
-             [self apiVersionString],
-             [self appIDString]];
+            requestString = [requestString stringByAppendingFormat:@"%@.json?%@%@",
+                             [self artistNameString],
+                             [self apiVersionString],
+                             [self appIDString]];
             break;
             
         case kBITArtistNameTypeMusicBrainzID:
-            [requestString appendFormat:@"%@?%@&%@&%@",
-             [_artist mbid],
-             [self formatString],
-             [self apiVersionString],
-             [self appIDString]];
+            requestString = [requestString stringByAppendingFormat:@"%@?%@&%@%@",
+                             [_artist mbid],
+                             [self formatString],
+                             [self apiVersionString],
+                             [self appIDString]];
             break;
             
         case kBITArtistNameTypeFacebookID:
-            [requestString appendFormat:@"%@?%@&%@&%@",
+            requestString = [requestString stringByAppendingFormat:@"%@?%@&%@%@",
              [_artist fbid],
              [self formatString],
              [self apiVersionString],
@@ -179,24 +179,24 @@ NSString *const responseFormat = @"json";
             break;
     }
     
-    [requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    requestString = [requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"Request String: %@", requestString);
     return [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
 }
 
 - (NSURLRequest *)eventRequestURL
 {
-    NSMutableString *requestString = [NSMutableString stringWithString:apiURLString];
-    [requestString appendFormat:@"%@/events/search.%@?%@&%@&%@&%@&%@",
-     [self artistNameString],
-     responseFormat,
-     [self dateString],
-     [self locationString],
-     [self radius],
-     [self apiVersionString],
-     [self appIDString]];
+    NSString *requestString = [NSString stringWithString:apiURLString];
+    requestString = [requestString stringByAppendingFormat:@"%@/events/search.%@?%@&%@&%@&%@&%@",
+                     [self artistNameString],
+                     responseFormat,
+                     [self apiVersionString],
+                     [self appIDString],
+                     [self dateString],
+                     [self locationString],
+                     [self radius]];
     
-    [requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    requestString = [requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"Request String: %@", requestString);
     return [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
 }
@@ -207,12 +207,12 @@ NSString *const responseFormat = @"json";
     [requestString appendFormat:@"%@/events/recommended.%@?%@&%@&%@&%@&%@&%@",
      [self artistNameString],
      responseFormat,
+     [self apiVersionString],
+     [self appIDString],
      [self dateString],
      [self locationString],
      [self radius],
-     [self onlyRecsString],
-     [self apiVersionString],
-     [self appIDString]];
+     [self onlyRecsString]];
     
     [requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"Request String: %@", requestString);
@@ -229,57 +229,9 @@ NSString *const responseFormat = @"json";
     return artistName;
 }
 
-- (NSString *)artistNameString
-{
-    switch ([[self artist] artistNameType]) {
-        case kBITArtistNameTypeString:
-            return [[self artist] name];
-            break;
-        
-        case kBITArtistNameTypeMusicBrainzID:
-            return [[self artist] mbid];
-            break;
-            
-        case kBITArtistNameTypeFacebookID:
-            return [[self artist] fbid];
-            break;
-            
-        default:
-            break;
-    }
-}
+#pragma mark Required Params
 
-- (NSString *)locationString
-{
-    return [NSString stringWithFormat:@"location=%@",
-            [[self location] string]];
-}
-
-- (NSString *)radiusString
-{
-    return [NSString stringWithFormat:@"radius=%@",
-            [self radius]];
-}
-
-- (NSString *)dateString
-{
-    return [NSString stringWithFormat:@"date=%@",
-            [[self dates] string]];
-}
-
-- (NSString *)onlyRecsString
-{
-    NSString *only_recs;
-    if ([self onlyRecommendations]) {
-        only_recs = @"true";
-    } else {
-        only_recs = @"false";
-    }
-    
-    return [NSString stringWithFormat:@"only_recs=%@",
-            only_recs];
-}
-
+// API version string should always go after the question mark
 - (NSString *)apiVersionString
 {
     return [NSString stringWithFormat:@"api_version=%@",
@@ -288,10 +240,76 @@ NSString *const responseFormat = @"json";
 
 - (NSString *)appIDString
 {
-    return [NSString stringWithFormat:@"app_id=%@",
+    return [NSString stringWithFormat:@"&app_id=%@",
             [BITAuthManager appID]];
 }
 
+- (NSString *)artistNameString
+{
+    switch ([[self artist] artistNameType]) {
+        case kBITArtistNameTypeString:
+            return [self sanitizeArtistNameString:_artist.name];
+            break;
+        
+        case kBITArtistNameTypeMusicBrainzID:
+            return _artist.mbid;
+            break;
+            
+        case kBITArtistNameTypeFacebookID:
+            return _artist.fbid;
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark Optional Params
+//Return the full param string if there is a value otherwise return an empty string
+- (NSString *)locationString
+{
+    if (![[[self location] string] isEqualToString:@""]) {
+        return [NSString stringWithFormat:@"&location=%@",
+                _location.string];
+    } else {
+        return @"";
+    }
+}
+
+- (NSString *)radiusString
+{
+    if (_radius) {
+        return [NSString stringWithFormat:@"&radius=%@",
+                _radius];
+    } else {
+        return @"";
+    }
+}
+
+- (NSString *)dateString
+{
+    if (![[[self dates] string] isEqualToString:@""]) {
+        return [NSString stringWithFormat:@"&date=%@",
+                _dates.string];
+    } else {
+        return @"";
+    }
+}
+
+- (NSString *)onlyRecsString
+{
+    NSString *only_recs;
+    if (_onlyRecommendations) {
+        only_recs = @"true";
+    } else {
+        only_recs = @"false";
+    }
+    
+    return [NSString stringWithFormat:@"&only_recs=%@",
+            only_recs];
+}
+
+// If the format string is part of the query, it should always go after the question mark
 - (NSString *)formatString
 {
     return [NSString stringWithFormat:@"format=%@",
