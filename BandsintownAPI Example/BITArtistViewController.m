@@ -21,7 +21,7 @@
 
 #import "BITArtistViewController.h"
 
-#import "BandsInTown.h"
+#import "Bandsintown.h"
 
 @interface BITArtistViewController ()
 

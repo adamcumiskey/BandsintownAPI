@@ -20,7 +20,7 @@
 //
 
 #import "AppDelegate.h"
-#import "BandsInTown.h"
+#import "Bandsintown.h"
 
 @implementation AppDelegate
 
