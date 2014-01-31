@@ -21,6 +21,8 @@
 
 #import "BITVenue.h"
 
+#import <AddressBookUI/AddressBookUI.h>
+
 static const NSString *kVenueNameKey = @"name";
 static const NSString *kVenueCityKey = @"city";
 static const NSString *kVenueRegionKey = @"region";
@@ -45,6 +47,18 @@ static const NSString *kVenueLongitudeKey = @"longitude";
     }
     
     return self;
+}
+
+- (void)fullAddressWithCountry:(BOOL)addCountryName completionHandler:(BITGeocodeCompletionHandler)completionHandler {
+	CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+	[geoCoder reverseGeocodeLocation:[[CLLocation alloc] initWithLatitude:_coordinate.latitude longitude:_coordinate.longitude] completionHandler:^(NSArray *placemarks, NSError *error) {
+		if (error) {
+			return completionHandler(NO, [NSString stringWithFormat:@"%@, %@, %@", _city, _region, _country], error);
+		} else {
+			CLPlacemark *placemark = [placemarks objectAtIndex:0];
+			return completionHandler(YES, ABCreateStringWithAddressDictionary(placemark.addressDictionary, addCountryName), error);
+		}
+	}];
 }
 
 @end

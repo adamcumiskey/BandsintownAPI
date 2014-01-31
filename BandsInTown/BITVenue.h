@@ -22,6 +22,10 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+typedef void (^BITGeocodeCompletionHandler)(BOOL success,
+                                         NSString *fullAddress,
+                                         NSError *error);
+
 @interface BITVenue : NSObject
 
 @property (strong, nonatomic) NSString *name;
@@ -31,5 +35,6 @@
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
+- (void)fullAddressWithCountry:(BOOL)addCountryName completionHandler:(BITGeocodeCompletionHandler)completionHandler;
 
 @end
