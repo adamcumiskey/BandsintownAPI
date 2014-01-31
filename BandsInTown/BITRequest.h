@@ -61,14 +61,16 @@ typedef NS_ENUM(NSInteger, BITRequestType) {
 + (instancetype)artistRequestForMusicBrainzID:(NSString *)mbid;
 
 // ***************************************************************************
-// Class methods for getting events for an artist.
-// These requests default to events only for the artist.
+// Class methods for getting event requests for an artist.
+// These requests have a default type of the artist events request
 
 // To get recommendations, set the requestType to kBITRecommendationRequest.
 // The onlyRecommendations BOOL can be set to YES to filter out events for the original artist.
+// This will change the request type to recommendations
 
 // The location and radius properties can also be set after the object is
-// instantiated to allow for searching a perticular area.
+// instantiated to allow for searching a perticular area. This will change the
+// request type to the event search
 // ***************************************************************************
 + (instancetype)allEventsForArtist:(BITArtist *)artist;
 + (instancetype)upcomingEventsForArtist:(BITArtist *)artist;

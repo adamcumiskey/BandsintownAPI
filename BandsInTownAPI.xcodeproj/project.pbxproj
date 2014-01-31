@@ -20,8 +20,8 @@
 		665C26F318860C7E00FF6833 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 665C26CF18860C7E00FF6833 /* Foundation.framework */; };
 		665C26F418860C7E00FF6833 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 665C26D318860C7E00FF6833 /* UIKit.framework */; };
 		665C26FC18860C7E00FF6833 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 665C26FA18860C7E00FF6833 /* InfoPlist.strings */; };
-		665C26FE18860C7E00FF6833 /* BandsInTownAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 665C26FD18860C7E00FF6833 /* BandsInTownAPITests.m */; };
 		665C270C18860F4700FF6833 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 665C270B18860F4700FF6833 /* CoreLocation.framework */; };
+		666AB2E2189B4C8500261D04 /* BITRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 666AB2E1189B4C8500261D04 /* BITRequestTests.m */; };
 		66896DD018876DA100C48A16 /* BITArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DCF18876DA100C48A16 /* BITArtist.m */; };
 		66896DD318876DAF00C48A16 /* BITAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DD218876DAF00C48A16 /* BITAuthManager.m */; };
 		66896DD618876DB600C48A16 /* BITDateRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DD518876DB600C48A16 /* BITDateRange.m */; };
@@ -67,8 +67,8 @@
 		665C26F118860C7E00FF6833 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		665C26F918860C7E00FF6833 /* BandsInTownAPITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BandsInTownAPITests-Info.plist"; sourceTree = "<group>"; };
 		665C26FB18860C7E00FF6833 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		665C26FD18860C7E00FF6833 /* BandsInTownAPITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BandsInTownAPITests.m; sourceTree = "<group>"; };
 		665C270B18860F4700FF6833 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		666AB2E1189B4C8500261D04 /* BITRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BITRequestTests.m; sourceTree = "<group>"; };
 		66896DCE18876DA100C48A16 /* BITArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BITArtist.h; path = BandsInTown/BITArtist.h; sourceTree = SOURCE_ROOT; };
 		66896DCF18876DA100C48A16 /* BITArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BITArtist.m; path = BandsInTown/BITArtist.m; sourceTree = SOURCE_ROOT; };
 		66896DD118876DAF00C48A16 /* BITAuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BITAuthManager.h; path = BandsInTown/BITAuthManager.h; sourceTree = SOURCE_ROOT; };
@@ -202,8 +202,8 @@
 		665C26F718860C7E00FF6833 /* BandsInTownAPITests */ = {
 			isa = PBXGroup;
 			children = (
-				665C26FD18860C7E00FF6833 /* BandsInTownAPITests.m */,
 				665C26F818860C7E00FF6833 /* Supporting Files */,
+				666AB2E1189B4C8500261D04 /* BITRequestTests.m */,
 			);
 			path = BandsInTownAPITests;
 			sourceTree = "<group>";
@@ -503,7 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				665C26FE18860C7E00FF6833 /* BandsInTownAPITests.m in Sources */,
+				666AB2E2189B4C8500261D04 /* BITRequestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
