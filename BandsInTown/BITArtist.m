@@ -48,6 +48,7 @@ static const NSString *kUpcomingEventsCountKey = @"upcoming_events_count";
 {
     if (self = [super init]) {
         _name = name;
+        _artistNameType = kBITArtistNameTypeString;
     }
     return self;
 }
@@ -56,6 +57,7 @@ static const NSString *kUpcomingEventsCountKey = @"upcoming_events_count";
 {
     if (self = [super init]) {
         _mbid = mbid;
+        _artistNameType = kBITArtistNameTypeMusicBrainzID;
     }
     return self;
 }
@@ -64,6 +66,7 @@ static const NSString *kUpcomingEventsCountKey = @"upcoming_events_count";
 {
     if (self = [super init]) {
         _fbid = fbid;
+        _artistNameType = kBITArtistNameTypeFacebookID;
     }
     return self;
 }
@@ -82,6 +85,26 @@ static const NSString *kUpcomingEventsCountKey = @"upcoming_events_count";
 + (instancetype)artistForFacebookID:(NSString *)fbid
 {
     return [[BITArtist alloc] initWithFacebookID:fbid];
+}
+
+#pragma mark - Custom Setters
+#pragma mark Used to ensure the correct nameType gets set
+- (void)setName:(NSString *)name
+{
+    _name = name;
+    _artistNameType = kBITArtistNameTypeString;
+}
+
+- (void)setMbid:(NSString *)mbid
+{
+    _mbid = mbid;
+    _artistNameType = kBITArtistNameTypeMusicBrainzID;
+}
+
+- (void)setFbid:(NSString *)fbid
+{
+    _fbid = fbid;
+    _artistNameType = kBITArtistNameTypeFacebookID;
 }
 
 #pragma mark - Public methods

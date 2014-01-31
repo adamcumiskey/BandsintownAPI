@@ -21,6 +21,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, BITArtistNameType){
+    kBITArtistNameTypeString,
+    kBITArtistNameTypeMusicBrainzID,
+    kBITArtistNameTypeFacebookID
+};
+
 typedef void (^artistImageCompletionHandler)(BOOL success,
                                              UIImage *artistImage,
                                              NSError *error);
@@ -34,6 +40,7 @@ typedef void (^artistImageCompletionHandler)(BOOL success,
 @property (strong, nonatomic) NSURL *thumbURL; // URL for thumbnail image
 @property (strong, nonatomic) NSURL *facebookTourDatesURL; // URL to the facebook tour page
 @property (strong, nonatomic) NSNumber *numberOfUpcomingEvents; // Count of the number of upcoming events
+@property (nonatomic) BITArtistNameType artistNameType;
 
 // When parsing data from the JSON response, use this method to parse into the BITArtist object
 - (id)initWithDictionary:(NSDictionary *)dictonary;
@@ -51,5 +58,9 @@ typedef void (^artistImageCompletionHandler)(BOOL success,
 // Uses an NSURLConnection to asynchronously grab the artist image.
 // The image is passed back through the completion handler.
 - (void)requestImageWithCompletionHandler:(artistImageCompletionHandler)completionHandler;
+
+// Returns a string for the artist_id parameter of the request if it has one
+// *** Currently not going to bother trying to support this *** //
+//- (NSString *)artistID;
 
 @end
