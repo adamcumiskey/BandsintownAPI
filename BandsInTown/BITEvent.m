@@ -53,7 +53,8 @@ static const NSString *kEventVenueKey = @"venue";
         _ticketOnSaleDate = [self dateFromDateString:[self sanitizedString:[dictionary objectForKey:kEventOnSaleDateKey]]];
         _facebookRSVPURL = [NSURL URLWithString:[self sanitizedString:[dictionary objectForKey:kEventFacebookURLKey]]];
         _ticketURL = [NSURL URLWithString:[self sanitizedString:[dictionary objectForKey:kEventTicketURLKey]]];
-        
+        _artists = [[NSMutableArray alloc] init];
+		
         // Parse the BITArtist objects out of the JSON array
         NSArray *artistDictionaries = [dictionary objectForKey:kEventArtistsKey];
         for (NSDictionary *artistDictionary in artistDictionaries) {
