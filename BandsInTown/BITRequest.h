@@ -23,7 +23,8 @@
 
 typedef NS_ENUM(NSInteger, BITRequestType) {
     kBITArtistRequest,
-    kBITEventRequest,
+    kBITEventsRequest,
+    kBITEventSearch,
     kBITRecommendationRequest,
 };
 
@@ -77,7 +78,7 @@ typedef NS_ENUM(NSInteger, BITRequestType) {
 // Setters to make it easier to customize the request
 - (void)setSearchLocation:(BITLocation *)location
                 andRadius:(NSNumber *)radius;
-- (void)includeRecommendations:(BOOL)exludeArtistFromResults;
+- (void)includeRecommendationsExludingArtist:(BOOL)exludeArtistFromResults;
 
 // Returns the URLRequest for the current BITRequest object
 - (NSURLRequest *)urlRequest;

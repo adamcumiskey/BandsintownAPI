@@ -64,12 +64,26 @@
 
 - (IBAction)search:(id)sender
 {
-    BITRequest *request = [BITRequest artistRequestForName:_artistTextField.text];
+    BITRequest *request = [BITRequest eventsForArtist:[BITArtist artistNamed:_artistTextField.text]
+                                          inDateRange:[BITDateRange upcomingEvents]];
+    [request setSearchLocation:[BITLocation locationWithPrimaryString:@"Hackettstown"
+                                                   andSecondaryString:@"NJ"]
+                     andRadius:@150];
+    [request includeRecommendationsExludingArtist:NO];
     [BITRequestManager sendRequest:request
              withCompletionHandler:^(BOOL success,
                                      BITResponse *response,
                                      NSError *error) {
-                 NSLog(@"%@", response.rawResponse);
+                 if (success) {
+                     NSLog(@"%@", response.rawResponse);
+                 } else {
+                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                     message:error.localizedDescription
+                                                                    delegate:nil
+                                                           cancelButtonTitle:@"Ok"
+                                                           otherButtonTitles:nil, nil];
+                     [alert show];
+                 }
              }];
 }
 

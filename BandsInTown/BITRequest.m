@@ -86,7 +86,7 @@ NSString *const responseFormat = @"json";
 {
     BITDateRange *dateRange = [BITDateRange allEvents];
     return [[BITRequest alloc] initWithArtist:artist
-                                  requestType:kBITEventRequest
+                                  requestType:kBITEventsRequest
                                     dateRange:dateRange
                                      location:nil
                                        radius:nil];
@@ -96,7 +96,7 @@ NSString *const responseFormat = @"json";
 {
     BITDateRange *dateRange = [BITDateRange upcomingEvents];
     return [[BITRequest alloc] initWithArtist:artist
-                                  requestType:kBITEventRequest
+                                  requestType:kBITEventsRequest
                                     dateRange:dateRange
                                      location:nil
                                        radius:nil];
@@ -106,7 +106,7 @@ NSString *const responseFormat = @"json";
                     inDateRange:(BITDateRange *)dateRange
 {
     return [[BITRequest alloc] initWithArtist:artist
-                                  requestType:kBITEventRequest
+                                  requestType:kBITEventsRequest
                                     dateRange:dateRange
                                      location:nil
                                        radius:nil];
@@ -116,14 +116,20 @@ NSString *const responseFormat = @"json";
 - (void)setSearchLocation:(BITLocation *)location
                 andRadius:(NSNumber *)radius
 {
-    _location = location;
-    _radius = radius;
+    [self setLocation:location];
+    [self setRadius:radius];
 }
 
-- (void)includeRecommendations:(BOOL)exludeArtistFromResults
+- (void)includeRecommendationsExludingArtist:(BOOL)exludeArtistFromResults
 {
-    _requestType = kBITRecommendationRequest;
-    _onlyRecommendations = exludeArtistFromResults;
+    [self setRequestType:kBITRecommendationRequest];
+    [self setOnlyRecommendations:exludeArtistFromResults];
+}
+
+- (void)setLocation:(BITLocation *)location
+{
+    _location = location;
+    [self setRequestType:kBITEventSearch];
 }
 
 #pragma mark - Public Methods
@@ -134,8 +140,12 @@ NSString *const responseFormat = @"json";
             return [self aritstRequestURL];
             break;
             
-        case kBITEventRequest:
-            return [self eventRequestURL];
+        case kBITEventsRequest:
+            return [self eventsRequestURL];
+            break;
+            
+        case kBITEventSearch:
+            return [self eventSearchURL];
             break;
             
         case kBITRecommendationRequest:
@@ -180,46 +190,66 @@ NSString *const responseFormat = @"json";
     }
     
     requestString = [requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    requestString = [requestString stringByReplacingOccurrencesOfString:@"(null)"
+                                                             withString:@""];
     NSLog(@"Request String: %@", requestString);
     return [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
 }
 
-- (NSURLRequest *)eventRequestURL
+- (NSURLRequest *)eventsRequestURL
 {
     NSString *requestString = [NSString stringWithString:apiURLString];
-    requestString = [requestString stringByAppendingFormat:@"%@/events/search.%@?%@&%@&%@&%@&%@",
+    requestString = [requestString stringByAppendingFormat:@"%@/events.%@?%@%@%@",
+                     [self artistNameString],
+                     responseFormat,
+                     [self apiVersionString],
+                     [self appIDString],
+                     [self dateString]];
+    
+    return [self urlRequestFromString:requestString];
+}
+
+- (NSURLRequest *)eventSearchURL
+{
+    NSString *requestString = [NSString stringWithString:apiURLString];
+    requestString = [requestString stringByAppendingFormat:@"%@/events/search.%@?%@%@%@%@%@",
                      [self artistNameString],
                      responseFormat,
                      [self apiVersionString],
                      [self appIDString],
                      [self dateString],
                      [self locationString],
-                     [self radius]];
+                     [self radiusString]];
     
-    requestString = [requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"Request String: %@", requestString);
-    return [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
+    return [self urlRequestFromString:requestString];
 }
 
 - (NSURLRequest *)recommendationRequestURL
 {
-    NSMutableString *requestString = [NSMutableString stringWithString:apiURLString];
-    [requestString appendFormat:@"%@/events/recommended.%@?%@&%@&%@&%@&%@&%@",
-     [self artistNameString],
-     responseFormat,
-     [self apiVersionString],
-     [self appIDString],
-     [self dateString],
-     [self locationString],
-     [self radius],
-     [self onlyRecsString]];
+    NSString *requestString = [NSString stringWithString:apiURLString];
+    requestString = [requestString stringByAppendingFormat:@"%@/events/recommended.%@?%@%@%@%@%@%@",
+                     [self artistNameString],
+                     responseFormat,
+                     [self apiVersionString],
+                     [self appIDString],
+                     [self dateString],
+                     [self locationString],
+                     [self radiusString],
+                     [self onlyRecsString]];
     
-    [requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"Request String: %@", requestString);
-    return [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
+    return [self urlRequestFromString:requestString];
 }
 
 #pragma mark - String Helpers (Private)
+- (NSURLRequest *)urlRequestFromString:(NSString *)string
+{
+    string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    string = [string stringByReplacingOccurrencesOfString:@"(null)"
+                                               withString:@""];
+    NSLog(@"Request String: %@", string);
+    return [NSURLRequest requestWithURL:[NSURL URLWithString:string]];
+}
+
 - (NSString *)sanitizeArtistNameString:(NSString *)artistName
 {
     artistName = [artistName stringByReplacingOccurrencesOfString:@"/"
@@ -230,7 +260,6 @@ NSString *const responseFormat = @"json";
 }
 
 #pragma mark Required Params
-
 // API version string should always go after the question mark
 - (NSString *)apiVersionString
 {
@@ -268,7 +297,7 @@ NSString *const responseFormat = @"json";
 //Return the full param string if there is a value otherwise return an empty string
 - (NSString *)locationString
 {
-    if (![[[self location] string] isEqualToString:@""]) {
+    if (![[[self location] string] isEqualToString:@""] && _location) {
         return [NSString stringWithFormat:@"&location=%@",
                 _location.string];
     } else {
@@ -288,7 +317,7 @@ NSString *const responseFormat = @"json";
 
 - (NSString *)dateString
 {
-    if (![[[self dates] string] isEqualToString:@""]) {
+    if (![[[self dates] string] isEqualToString:@""] && _dates) {
         return [NSString stringWithFormat:@"&date=%@",
                 _dates.string];
     } else {

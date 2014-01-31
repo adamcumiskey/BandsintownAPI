@@ -68,7 +68,7 @@
                                            NSArray *events = [self eventsFromData:data];
                                            if (events) {
                                                response = [[BITResponse alloc] initWithEvents:events
-                                                                                 fromResponse:[events JSONString]];
+                                                                                 fromResponse:[jsonDictionary JSONString]];
                                            }
                                        }
                                        
