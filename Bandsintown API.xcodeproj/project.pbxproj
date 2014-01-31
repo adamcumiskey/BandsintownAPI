@@ -31,8 +31,8 @@
 		66896DE218876DD500C48A16 /* BITRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DE118876DD500C48A16 /* BITRequestManager.m */; };
 		66896DE518876DDD00C48A16 /* BITVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DE418876DDD00C48A16 /* BITVenue.m */; };
 		66896DF21887925A00C48A16 /* BITArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DF11887925A00C48A16 /* BITArtistViewController.m */; };
-		66896DF51887927300C48A16 /* BITListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DF41887927300C48A16 /* BITListViewController.m */; };
-		66896DF91887929300C48A16 /* BITSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66896DF81887929300C48A16 /* BITSearchViewController.m */; };
+		668EC558189C513B00523387 /* BITListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 668EC557189C513B00523387 /* BITListViewController.m */; };
+		668EC55B189C514200523387 /* BITSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 668EC55A189C514200523387 /* BITSearchViewController.m */; };
 		8A36BDAD17AC4279B2684B8F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6BB631C97449F193E91B59 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -51,21 +51,21 @@
 		655F883254454800BB0B106F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		66213A23188BA08D00A09EE6 /* BITResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BITResponse.h; path = BandsInTown/BITResponse.h; sourceTree = SOURCE_ROOT; };
 		66213A24188BA08D00A09EE6 /* BITResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BITResponse.m; path = BandsInTown/BITResponse.m; sourceTree = SOURCE_ROOT; };
-		665C26CC18860C7E00FF6833 /* BandsInTownAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BandsInTownAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		665C26CC18860C7E00FF6833 /* Bandsintown API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bandsintown API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		665C26CF18860C7E00FF6833 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		665C26D118860C7E00FF6833 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		665C26D318860C7E00FF6833 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		665C26D718860C7E00FF6833 /* BandsInTownAPI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BandsInTownAPI-Info.plist"; sourceTree = "<group>"; };
+		665C26D718860C7E00FF6833 /* BandsintownAPI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "BandsintownAPI-Info.plist"; path = "../BandsintownAPI Example/BandsintownAPI-Info.plist"; sourceTree = "<group>"; };
 		665C26D918860C7E00FF6833 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		665C26DB18860C7E00FF6833 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		665C26DD18860C7E00FF6833 /* BandsInTownAPI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BandsInTownAPI-Prefix.pch"; sourceTree = "<group>"; };
-		665C26DE18860C7E00FF6833 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		665C26DF18860C7E00FF6833 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		665C26DB18860C7E00FF6833 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "../BandsintownAPI Example/main.m"; sourceTree = "<group>"; };
+		665C26DD18860C7E00FF6833 /* BandsintownAPI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "BandsintownAPI-Prefix.pch"; path = "../BandsintownAPI Example/BandsintownAPI-Prefix.pch"; sourceTree = "<group>"; };
+		665C26DE18860C7E00FF6833 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "../BandsintownAPI Example/AppDelegate.h"; sourceTree = "<group>"; };
+		665C26DF18860C7E00FF6833 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "../BandsintownAPI Example/AppDelegate.m"; sourceTree = "<group>"; };
 		665C26E218860C7E00FF6833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		665C26EA18860C7E00FF6833 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		665C26F018860C7E00FF6833 /* BandsInTownAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BandsInTownAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		665C26EA18860C7E00FF6833 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "../BandsintownAPI Example/Images.xcassets"; sourceTree = "<group>"; };
+		665C26F018860C7E00FF6833 /* Bandsintown APITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bandsintown APITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		665C26F118860C7E00FF6833 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		665C26F918860C7E00FF6833 /* BandsInTownAPITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BandsInTownAPITests-Info.plist"; sourceTree = "<group>"; };
+		665C26F918860C7E00FF6833 /* Bandsintown APITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bandsintown APITests-Info.plist"; sourceTree = "<group>"; };
 		665C26FB18860C7E00FF6833 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		665C270B18860F4700FF6833 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		666AB2E1189B4C8500261D04 /* BITRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BITRequestTests.m; sourceTree = "<group>"; };
@@ -86,12 +86,12 @@
 		66896DE318876DDD00C48A16 /* BITVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BITVenue.h; path = BandsInTown/BITVenue.h; sourceTree = SOURCE_ROOT; };
 		66896DE418876DDD00C48A16 /* BITVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BITVenue.m; path = BandsInTown/BITVenue.m; sourceTree = SOURCE_ROOT; };
 		66896DEA1887861A00C48A16 /* BandsInTown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BandsInTown.h; path = ../BandsInTown/BandsInTown.h; sourceTree = "<group>"; };
-		66896DF01887925A00C48A16 /* BITArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITArtistViewController.h; sourceTree = "<group>"; };
-		66896DF11887925A00C48A16 /* BITArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BITArtistViewController.m; sourceTree = "<group>"; };
-		66896DF31887927300C48A16 /* BITListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITListViewController.h; sourceTree = "<group>"; };
-		66896DF41887927300C48A16 /* BITListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BITListViewController.m; sourceTree = "<group>"; };
-		66896DF71887929300C48A16 /* BITSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITSearchViewController.h; sourceTree = "<group>"; };
-		66896DF81887929300C48A16 /* BITSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BITSearchViewController.m; sourceTree = "<group>"; };
+		66896DF01887925A00C48A16 /* BITArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BITArtistViewController.h; path = "../BandsintownAPI Example/BITArtistViewController.h"; sourceTree = "<group>"; };
+		66896DF11887925A00C48A16 /* BITArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BITArtistViewController.m; path = "../BandsintownAPI Example/BITArtistViewController.m"; sourceTree = "<group>"; };
+		668EC556189C513B00523387 /* BITListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BITListViewController.h; path = "BandsintownAPI Example/BITListViewController.h"; sourceTree = SOURCE_ROOT; };
+		668EC557189C513B00523387 /* BITListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BITListViewController.m; path = "BandsintownAPI Example/BITListViewController.m"; sourceTree = SOURCE_ROOT; };
+		668EC559189C514200523387 /* BITSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BITSearchViewController.h; path = "BandsintownAPI Example/BITSearchViewController.h"; sourceTree = SOURCE_ROOT; };
+		668EC55A189C514200523387 /* BITSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BITSearchViewController.m; path = "BandsintownAPI Example/BITSearchViewController.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,9 +143,9 @@
 		665C26C318860C7E00FF6833 = {
 			isa = PBXGroup;
 			children = (
-				665C270718860E6100FF6833 /* BandsInTown */,
-				665C26D518860C7E00FF6833 /* BandsInTownAPIExample */,
-				665C26F718860C7E00FF6833 /* BandsInTownAPITests */,
+				665C270718860E6100FF6833 /* API */,
+				665C26D518860C7E00FF6833 /* Example */,
+				665C26F718860C7E00FF6833 /* Tests */,
 				665C26CE18860C7E00FF6833 /* Frameworks */,
 				665C26CD18860C7E00FF6833 /* Products */,
 				655F883254454800BB0B106F /* Pods.xcconfig */,
@@ -155,8 +155,8 @@
 		665C26CD18860C7E00FF6833 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				665C26CC18860C7E00FF6833 /* BandsInTownAPI.app */,
-				665C26F018860C7E00FF6833 /* BandsInTownAPITests.xctest */,
+				665C26CC18860C7E00FF6833 /* Bandsintown API.app */,
+				665C26F018860C7E00FF6833 /* Bandsintown APITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,7 +174,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		665C26D518860C7E00FF6833 /* BandsInTownAPIExample */ = {
+		665C26D518860C7E00FF6833 /* Example */ = {
 			isa = PBXGroup;
 			children = (
 				665C26E118860C7E00FF6833 /* Main.storyboard */,
@@ -184,40 +184,41 @@
 				665C26EA18860C7E00FF6833 /* Images.xcassets */,
 				665C26D618860C7E00FF6833 /* Supporting Files */,
 			);
-			name = BandsInTownAPIExample;
+			name = Example;
 			path = BandsInTownAPI;
 			sourceTree = "<group>";
 		};
 		665C26D618860C7E00FF6833 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				665C26D718860C7E00FF6833 /* BandsInTownAPI-Info.plist */,
+				665C26D718860C7E00FF6833 /* BandsintownAPI-Info.plist */,
 				665C26D818860C7E00FF6833 /* InfoPlist.strings */,
 				665C26DB18860C7E00FF6833 /* main.m */,
-				665C26DD18860C7E00FF6833 /* BandsInTownAPI-Prefix.pch */,
+				665C26DD18860C7E00FF6833 /* BandsintownAPI-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		665C26F718860C7E00FF6833 /* BandsInTownAPITests */ = {
+		665C26F718860C7E00FF6833 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				665C26F818860C7E00FF6833 /* Supporting Files */,
 				666AB2E1189B4C8500261D04 /* BITRequestTests.m */,
 			);
+			name = Tests;
 			path = BandsInTownAPITests;
 			sourceTree = "<group>";
 		};
 		665C26F818860C7E00FF6833 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				665C26F918860C7E00FF6833 /* BandsInTownAPITests-Info.plist */,
+				665C26F918860C7E00FF6833 /* Bandsintown APITests-Info.plist */,
 				665C26FA18860C7E00FF6833 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		665C270718860E6100FF6833 /* BandsInTown */ = {
+		665C270718860E6100FF6833 /* API */ = {
 			isa = PBXGroup;
 			children = (
 				66896DEA1887861A00C48A16 /* BandsInTown.h */,
@@ -231,7 +232,7 @@
 				66896DE61887789200C48A16 /* Response */,
 				665C270D18860F6600FF6833 /* Venue */,
 			);
-			name = BandsInTown;
+			name = API;
 			path = BandsInTownAPI;
 			sourceTree = "<group>";
 		};
@@ -326,19 +327,21 @@
 		66896DED1887921C00C48A16 /* BITSearchViewController */ = {
 			isa = PBXGroup;
 			children = (
-				66896DF71887929300C48A16 /* BITSearchViewController.h */,
-				66896DF81887929300C48A16 /* BITSearchViewController.m */,
+				668EC559189C514200523387 /* BITSearchViewController.h */,
+				668EC55A189C514200523387 /* BITSearchViewController.m */,
 			);
 			name = BITSearchViewController;
+			path = "../BandsintownAPI Example/BITSearchViewController";
 			sourceTree = "<group>";
 		};
 		66896DEE1887922900C48A16 /* BITListViewController */ = {
 			isa = PBXGroup;
 			children = (
-				66896DF31887927300C48A16 /* BITListViewController.h */,
-				66896DF41887927300C48A16 /* BITListViewController.m */,
+				668EC556189C513B00523387 /* BITListViewController.h */,
+				668EC557189C513B00523387 /* BITListViewController.m */,
 			);
 			name = BITListViewController;
+			path = "../BandsintownAPI Example/BITListViewController";
 			sourceTree = "<group>";
 		};
 		66896DEF1887923600C48A16 /* BITArtistViewController */ = {
@@ -353,9 +356,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		665C26CB18860C7E00FF6833 /* BandsInTownAPI */ = {
+		665C26CB18860C7E00FF6833 /* Bandsintown API */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 665C270118860C7F00FF6833 /* Build configuration list for PBXNativeTarget "BandsInTownAPI" */;
+			buildConfigurationList = 665C270118860C7F00FF6833 /* Build configuration list for PBXNativeTarget "Bandsintown API" */;
 			buildPhases = (
 				5673FDD0A1804427B26B3F03 /* Check Pods Manifest.lock */,
 				665C26C818860C7E00FF6833 /* Sources */,
@@ -367,14 +370,14 @@
 			);
 			dependencies = (
 			);
-			name = BandsInTownAPI;
+			name = "Bandsintown API";
 			productName = BandsInTownAPI;
-			productReference = 665C26CC18860C7E00FF6833 /* BandsInTownAPI.app */;
+			productReference = 665C26CC18860C7E00FF6833 /* Bandsintown API.app */;
 			productType = "com.apple.product-type.application";
 		};
-		665C26EF18860C7E00FF6833 /* BandsInTownAPITests */ = {
+		665C26EF18860C7E00FF6833 /* Bandsintown APITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 665C270418860C7F00FF6833 /* Build configuration list for PBXNativeTarget "BandsInTownAPITests" */;
+			buildConfigurationList = 665C270418860C7F00FF6833 /* Build configuration list for PBXNativeTarget "Bandsintown APITests" */;
 			buildPhases = (
 				665C26EC18860C7E00FF6833 /* Sources */,
 				665C26ED18860C7E00FF6833 /* Frameworks */,
@@ -385,9 +388,9 @@
 			dependencies = (
 				665C26F618860C7E00FF6833 /* PBXTargetDependency */,
 			);
-			name = BandsInTownAPITests;
+			name = "Bandsintown APITests";
 			productName = BandsInTownAPITests;
-			productReference = 665C26F018860C7E00FF6833 /* BandsInTownAPITests.xctest */;
+			productReference = 665C26F018860C7E00FF6833 /* Bandsintown APITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -404,7 +407,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 665C26C718860C7E00FF6833 /* Build configuration list for PBXProject "BandsInTownAPI" */;
+			buildConfigurationList = 665C26C718860C7E00FF6833 /* Build configuration list for PBXProject "Bandsintown API" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -417,8 +420,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				665C26CB18860C7E00FF6833 /* BandsInTownAPI */,
-				665C26EF18860C7E00FF6833 /* BandsInTownAPITests */,
+				665C26CB18860C7E00FF6833 /* Bandsintown API */,
+				665C26EF18860C7E00FF6833 /* Bandsintown APITests */,
 			);
 		};
 /* End PBXProject section */
@@ -482,7 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66896DF51887927300C48A16 /* BITListViewController.m in Sources */,
+				668EC558189C513B00523387 /* BITListViewController.m in Sources */,
 				66896DDF18876DCD00C48A16 /* BITRequest.m in Sources */,
 				66213A25188BA08D00A09EE6 /* BITResponse.m in Sources */,
 				66896DDC18876DC400C48A16 /* BITLocation.m in Sources */,
@@ -494,7 +497,7 @@
 				66896DD318876DAF00C48A16 /* BITAuthManager.m in Sources */,
 				66896DD618876DB600C48A16 /* BITDateRange.m in Sources */,
 				665C26E018860C7E00FF6833 /* AppDelegate.m in Sources */,
-				66896DF91887929300C48A16 /* BITSearchViewController.m in Sources */,
+				668EC55B189C514200523387 /* BITSearchViewController.m in Sources */,
 				665C26DC18860C7E00FF6833 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,7 +515,7 @@
 /* Begin PBXTargetDependency section */
 		665C26F618860C7E00FF6833 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 665C26CB18860C7E00FF6833 /* BandsInTownAPI */;
+			target = 665C26CB18860C7E00FF6833 /* Bandsintown API */;
 			targetProxy = 665C26F518860C7E00FF6833 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -524,6 +527,7 @@
 				665C26D918860C7E00FF6833 /* en */,
 			);
 			name = InfoPlist.strings;
+			path = "../BandsintownAPI Example";
 			sourceTree = "<group>";
 		};
 		665C26E118860C7E00FF6833 /* Main.storyboard */ = {
@@ -532,6 +536,7 @@
 				665C26E218860C7E00FF6833 /* Base */,
 			);
 			name = Main.storyboard;
+			path = "../BandsintownAPI Example";
 			sourceTree = "<group>";
 		};
 		665C26FA18860C7E00FF6833 /* InfoPlist.strings */ = {
@@ -624,9 +629,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BandsInTownAPI/BandsInTownAPI-Prefix.pch";
-				INFOPLIST_FILE = "BandsInTownAPI/BandsInTownAPI-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "BandsintownAPI Example/BandsintownAPI-Prefix.pch";
+				INFOPLIST_FILE = "BandsInTownAPI Example/BandsintownAPI-Info.plist";
+				PRODUCT_NAME = "Bandsintown API";
+				USER_HEADER_SEARCH_PATHS = BandsInTown;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -638,9 +644,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BandsInTownAPI/BandsInTownAPI-Prefix.pch";
-				INFOPLIST_FILE = "BandsInTownAPI/BandsInTownAPI-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "BandsintownAPI Example/BandsintownAPI-Prefix.pch";
+				INFOPLIST_FILE = "BandsInTownAPI Example/BandsintownAPI-Info.plist";
+				PRODUCT_NAME = "Bandsintown API";
+				USER_HEADER_SEARCH_PATHS = BandsInTown;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -661,8 +668,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "BandsInTownAPITests/BandsInTownAPITests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "BandsInTownAPITests/Bandsintown APITests-Info.plist";
+				PRODUCT_NAME = "Bandsintown APITests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -680,8 +687,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BandsInTownAPI/BandsInTownAPI-Prefix.pch";
-				INFOPLIST_FILE = "BandsInTownAPITests/BandsInTownAPITests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "BandsInTownAPITests/Bandsintown APITests-Info.plist";
+				PRODUCT_NAME = "Bandsintown APITests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -690,7 +697,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		665C26C718860C7E00FF6833 /* Build configuration list for PBXProject "BandsInTownAPI" */ = {
+		665C26C718860C7E00FF6833 /* Build configuration list for PBXProject "Bandsintown API" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				665C26FF18860C7F00FF6833 /* Debug */,
@@ -699,7 +706,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		665C270118860C7F00FF6833 /* Build configuration list for PBXNativeTarget "BandsInTownAPI" */ = {
+		665C270118860C7F00FF6833 /* Build configuration list for PBXNativeTarget "Bandsintown API" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				665C270218860C7F00FF6833 /* Debug */,
@@ -708,7 +715,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		665C270418860C7F00FF6833 /* Build configuration list for PBXNativeTarget "BandsInTownAPITests" */ = {
+		665C270418860C7F00FF6833 /* Build configuration list for PBXNativeTarget "Bandsintown APITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				665C270518860C7F00FF6833 /* Debug */,
