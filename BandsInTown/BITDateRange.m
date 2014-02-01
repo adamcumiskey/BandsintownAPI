@@ -129,7 +129,7 @@
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"BITDateRange[type = %d, startDate = %@, endDate = %@]", _type, _startDate, _endDate];
+	return [NSString stringWithFormat:@"BITDateRange[type = %ld, startDate = %@, endDate = %@]", _type, _startDate, _endDate];
 }
 
 @end
