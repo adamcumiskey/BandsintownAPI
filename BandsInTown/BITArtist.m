@@ -136,4 +136,9 @@ static const NSString *kUpcomingEventsCountKey = @"upcoming_events_count";
     }
 }
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"BITArtist[name = %@, mbid = %@, fbid = %@, imageURL = %@, thumbURL = %@, facebookTourDatesURL = %@]"
+			, _name, _mbid, _fbid, _imageURL, _thumbURL, _facebookTourDatesURL];
+}
+
 @end

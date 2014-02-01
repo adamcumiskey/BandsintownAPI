@@ -362,4 +362,8 @@ NSString *const responseFormat = @"json";
             responseFormat];
 }
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"BITRequest[requestType = %d, artist = %@, dates = %@, location = %@, radius = %@, onlyRecommendations = %hhd]", _requestType, _artist, _dates, _location, _radius, _onlyRecommendations];
+}
+
 @end

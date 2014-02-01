@@ -61,4 +61,8 @@ static const NSString *kVenueLongitudeKey = @"longitude";
 	}];
 }
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"BITVenue[name = %@, city = %@, region = %@, country = %@, latitude = %f, longitude = %f]", _name, _city, _region, _country, _coordinate.latitude, _coordinate.longitude];
+}
+
 @end

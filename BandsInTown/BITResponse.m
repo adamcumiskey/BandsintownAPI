@@ -50,4 +50,8 @@
     return self;
 }
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"BITResponse[rawResponse = %@, artist = %@, events = %@]", _rawResponse, _artist, _events];
+}
+
 @end
