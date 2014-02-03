@@ -25,6 +25,7 @@
 typedef NS_ENUM(NSInteger, BITLocationType) {
     kStringLocation,
     kCoordinateLocation,
+    kGeoIPLocation,
 };
 
 @interface BITLocation : NSObject
@@ -44,7 +45,7 @@ typedef NS_ENUM(NSInteger, BITLocationType) {
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
 - (id)initWithLatitude:(double)latitude
           andLongitude:(double)longitude;
-- (id)initForCurrentLocation;
+- (id)initWithGeoIP;
 
 // Class initializers
 + (instancetype)locationWithPrimaryString:(NSString *)primaryString
@@ -52,6 +53,6 @@ typedef NS_ENUM(NSInteger, BITLocationType) {
 + (instancetype)locationWithCoordinate:(CLLocationCoordinate2D)coordinate;
 + (instancetype)locationWithLatitude:(double)latitude
                         andLongitude:(double)longitude;
-+ (instancetype)currentLocation;
++ (instancetype)locationWithGeoIP;
 
 @end

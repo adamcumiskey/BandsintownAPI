@@ -38,6 +38,10 @@
                     _longitude];
             break;
             
+        case kGeoIPLocation:
+            return @"use_geoip";
+            break;
+            
         default:
             return nil;
             break;
@@ -80,16 +84,10 @@
     return self;
 }
 
-- (instancetype)initForCurrentLocation
+- (id)initWithGeoIP
 {
     if (self = [super init]) {
-        // Strong feeling that this won't work
-        CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-        [locationManager startUpdatingLocation];
-        
-        _latitude = [NSString stringWithFormat:@"%f", locationManager.location.coordinate.latitude];
-        _longitude = [NSString stringWithFormat:@"%f", locationManager.location.coordinate.longitude];
-        _type = kCoordinateLocation;
+        _type = kGeoIPLocation;
     }
     
     return self;
@@ -115,16 +113,24 @@
                                     andLongitude:longitude];
 }
 
-+ (instancetype)currentLocation
++ (instancetype)locationWithGeoIP
 {
-    return [[BITLocation alloc] initForCurrentLocation];
+    return [[BITLocation alloc] initWithGeoIP];
 }
 
-#pragma mark -
-
-- (NSString *)description {
-	return [NSString stringWithFormat:@"BITLocation[type = %ld, primaryString = %@, secondaryString = %@, latitude = %@, longitude = %@]",
-			_type, _primaryString, _secondaryString, _latitude, _longitude];
+#pragma mark - Debug
+- (NSString *)description
+{
+	return [NSString stringWithFormat:@"BITLocation[type = %d, \
+            primaryString = %@, \
+            secondaryString = %@, \
+            latitude = %@, \
+            longitude = %@]",
+			_type,
+            _primaryString,
+            _secondaryString,
+            _latitude,
+            _longitude];
 }
 
 @end
