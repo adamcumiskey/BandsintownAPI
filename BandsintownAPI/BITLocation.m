@@ -120,6 +120,11 @@
     return [[BITLocation alloc] initForCurrentLocation];
 }
 
+#pragma mark -
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"BITLocation[type = %ld, primaryString = %@, secondaryString = %@, latitude = %@, longitude = %@]",
+			_type, _primaryString, _secondaryString, _latitude, _longitude];
+}
 
 @end

@@ -21,6 +21,8 @@
 
 #import "BITResponse.h"
 
+#import "BITEvent.h"
+
 @implementation BITResponse
 
 - (id)initWithArtist:(BITArtist *)artist fromResponse:(NSString *)rawResponse
@@ -38,9 +40,18 @@
     if (self = [super init]) {
         _events = events;
 		_rawResponse = rawResponse;
+		
+		//The first artist for the event will always be the one from the request
+		if (_events && [_events count] > 0 && [[[_events objectAtIndex:0] artists] count] > 0) {
+			_artist = [[[_events objectAtIndex:0] artists] objectAtIndex:0];
+		}
     }
     
     return self;
+}
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"BITResponse[rawResponse = %@, artist = %@, events = %@]", _rawResponse, _artist, _events];
 }
 
 @end
