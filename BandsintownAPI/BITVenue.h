@@ -35,6 +35,6 @@ typedef void (^BITGeocodeCompletionHandler)(BOOL success,
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
-- (void)fullAddressWithCountry:(BOOL)addCountryName completionHandler:(BITGeocodeCompletionHandler)completionHandler;
+- (void)reverseGeocodeLocationWithcompletionHandler:(BITGeocodeCompletionHandler)completionHandler;
 
 @end

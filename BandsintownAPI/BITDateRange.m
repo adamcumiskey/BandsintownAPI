@@ -128,8 +128,15 @@
     return [dateFormatter stringFromDate:date];
 }
 
-- (NSString *)description {
-	return [NSString stringWithFormat:@"BITDateRange[type = %ld, startDate = %@, endDate = %@]", _type, _startDate, _endDate];
+#pragma mark - Debug
+- (NSString *)description
+{
+	return [NSString stringWithFormat:@"BITDateRange[type = %d, \
+            startDate = %@, \
+            endDate = %@]",
+            _type,
+            _startDate,
+            _endDate];
 }
 
 @end

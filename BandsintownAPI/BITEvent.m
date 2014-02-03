@@ -89,8 +89,33 @@ static const NSString *kEventVenueKey = @"venue";
     return [dateFormatter dateFromString:dateString];
 }
 
-- (NSString *)description {
-	return [NSString stringWithFormat:@"BITEvent[eventID = %@, title = %@, eventDate = %@, location = %@, ticketURL = %@, ticketType = %@, ticketStatus = %@, ticketOnSaleDate = %@, facebookRSVPURL = %@, description = %@, artists = %@, venue = %@]",_eventID, _title, _eventDate, _location, _ticketURL, _ticketType, _ticketStatus, _ticketOnSaleDate, _facebookRSVPURL, _description, _artists, _venue];
+#pragma mark - Debug
+- (NSString *)description
+{
+	return [NSString stringWithFormat:@"BITEvent[eventID = %@, \
+            title = %@, \
+            eventDate = %@, \
+            location = %@, \
+            ticketURL = %@, \
+            ticketType = %@, \
+            ticketStatus = %@, \
+            ticketOnSaleDate = %@, \
+            facebookRSVPURL = %@, \
+            description = %@, \
+            artists = %@, \
+            venue = %@]",
+            _eventID,
+            _title,
+            _eventDate,
+            _location,
+            _ticketURL,
+            _ticketType,
+            _ticketStatus,
+            _ticketOnSaleDate,
+            _facebookRSVPURL,
+            _description,
+            _artists,
+            _venue];
 }
 
 @end

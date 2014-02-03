@@ -49,20 +49,37 @@ static const NSString *kVenueLongitudeKey = @"longitude";
     return self;
 }
 
-- (void)fullAddressWithCountry:(BOOL)addCountryName completionHandler:(BITGeocodeCompletionHandler)completionHandler {
+- (void)reverseGeocodeLocationWithcompletionHandler:(BITGeocodeCompletionHandler)completionHandler
+{
 	CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
-	[geoCoder reverseGeocodeLocation:[[CLLocation alloc] initWithLatitude:_coordinate.latitude longitude:_coordinate.longitude] completionHandler:^(NSArray *placemarks, NSError *error) {
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:_coordinate.latitude
+                                                      longitude:_coordinate.longitude];
+	[geoCoder reverseGeocodeLocation:location
+                   completionHandler:^(NSArray *placemarks, NSError *error) {
 		if (error) {
-			return completionHandler(NO, [NSString stringWithFormat:@"%@, %@, %@", _city, _region, _country], error);
+			return completionHandler(NO, nil, error);
 		} else {
 			CLPlacemark *placemark = [placemarks objectAtIndex:0];
-			return completionHandler(YES, ABCreateStringWithAddressDictionary(placemark.addressDictionary, addCountryName), error);
+			return completionHandler(YES, ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES), nil);
 		}
 	}];
 }
 
-- (NSString *)description {
-	return [NSString stringWithFormat:@"BITVenue[name = %@, city = %@, region = %@, country = %@, latitude = %f, longitude = %f]", _name, _city, _region, _country, _coordinate.latitude, _coordinate.longitude];
+#pragma mark - Debug
+- (NSString *)description
+{
+	return [NSString stringWithFormat:@"BITVenue[name = %@, \
+            city = %@, \
+            region = %@, \
+            country = %@, \
+            latitude = %f, \
+            longitude = %f]",
+            _name,
+            _city,
+            _region,
+            _country,
+            _coordinate.latitude,
+            _coordinate.longitude];
 }
 
 @end
