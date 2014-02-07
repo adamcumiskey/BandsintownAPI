@@ -365,7 +365,7 @@ NSString *const responseFormat = @"json";
 #pragma mark - Debug
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"BITRequest[requestType = %d, \
+	return [NSString stringWithFormat:@"BITRequest[requestType = %ld, \
             artist = %@, \
             dates = %@, \
             location = %@, \
