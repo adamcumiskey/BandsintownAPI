@@ -131,10 +131,9 @@
 #pragma mark - Debug
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"BITDateRange[type = %ld, \
+	return [NSString stringWithFormat:@"BITDateRange[\
             startDate = %@, \
             endDate = %@]",
-            _type,
             _startDate,
             _endDate];
 }
