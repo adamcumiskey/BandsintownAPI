@@ -29,7 +29,7 @@
 @property (strong, nonatomic) BITArtist *artist;
 @property (strong, nonatomic) NSArray *events;
 
-- (id)initWithArtist:(BITArtist *)artist fromResponse:(NSString *)rawResponse;
-- (id)initWithEvents:(NSArray *)events fromResponse:(NSString *)rawResponse;
+- (id)initWithArtist:(BITArtist *)artist;
+- (id)initWithEvents:(NSArray *)events;
 
 @end

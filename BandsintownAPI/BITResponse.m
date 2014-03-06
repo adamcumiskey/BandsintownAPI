@@ -25,21 +25,19 @@
 
 @implementation BITResponse
 
-- (id)initWithArtist:(BITArtist *)artist fromResponse:(NSString *)rawResponse
+- (id)initWithArtist:(BITArtist *)artist
 {
     if (self = [super init]) {
         _artist = artist;
-		_rawResponse = rawResponse;
     }
     
     return self;
 }
 
-- (id)initWithEvents:(NSArray *)events fromResponse:(NSString *)rawResponse
+- (id)initWithEvents:(NSArray *)events
 {
     if (self = [super init]) {
         _events = events;
-		_rawResponse = rawResponse;
 		
 		//The first artist for the event will always be the one from the request
 		if (_events && [_events count] > 0 && [[[_events objectAtIndex:0] artists] count] > 0) {

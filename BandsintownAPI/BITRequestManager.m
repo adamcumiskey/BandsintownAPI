@@ -21,7 +21,6 @@
 
 
 #import "BITRequestManager.h"
-#import <JSONKit/JSONKit.h>
 
 #import "BITArtist.h"
 #import "BITEvent.h"
@@ -49,8 +48,10 @@
                                    completionHandler(NO, nil, nil);
                                    
                                } else {
-                                   NSDictionary *jsonDictionary = [data objectFromJSONData];
                                    NSError *jsonError = nil;
+                                   NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                  options:NSJSONReadingAllowFragments
+                                                                                                    error:&jsonError];
                                    if ([jsonDictionary isKindOfClass:[NSDictionary class]]) {
                                        jsonError = [self errorsForJSON:jsonDictionary];
                                    }
@@ -61,18 +62,19 @@
                                        if ([request requestType] == kBITArtistRequest) {
                                            BITArtist *artist = [self artistFromData:data];
                                            if (artist) {
-                                               response = [[BITResponse alloc] initWithArtist:artist
-                                                                                 fromResponse:[jsonDictionary JSONString]];
+                                               response = [[BITResponse alloc] initWithArtist:artist];
                                            }
                                        } else {
                                            NSArray *events = [self eventsFromData:data];
                                            if (events) {
-                                               response = [[BITResponse alloc] initWithEvents:events
-                                                                                 fromResponse:[jsonDictionary JSONString]];
+                                               response = [[BITResponse alloc] initWithEvents:events];
                                            }
                                        }
                                        
                                        if (response) {
+                                           // Add the raw json string to the response
+                                           [response setRawResponse:[[NSString alloc] initWithData:data
+                                                                                          encoding:NSUTF8StringEncoding]];
                                            completionHandler(YES, response, nil);
                                        }
                                    } else {
@@ -103,8 +105,11 @@
 // Return: BITArtist
 + (BITArtist *)artistFromData:(NSData *)data
 {
-    NSDictionary *jsonDictionary = [data objectFromJSONData];
-    if (jsonDictionary && (id)jsonDictionary != [NSNull null]) {
+    NSError *error = nil;
+    NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                   options:NSJSONReadingAllowFragments
+                                                                     error:&error];
+    if (jsonDictionary && (id)jsonDictionary != [NSNull null] && !error) {
         BITArtist *artist = [[BITArtist alloc] initWithDictionary:jsonDictionary];
         return artist;
     } else {
@@ -117,8 +122,11 @@
 // Return: NSArray
 + (NSArray *)eventsFromData:(NSData *)data
 {
-    NSArray *jsonArray = [data objectFromJSONData];
-    if (jsonArray && (id)jsonArray != [NSNull null]) {
+    NSError *error = nil;
+    NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:data
+                                                              options:NSJSONReadingAllowFragments
+                                                                error:&error];
+    if (jsonArray && (id)jsonArray != [NSNull null] && !error) {
         NSMutableArray *events = [NSMutableArray array];
         for (NSDictionary *eventDictionary in jsonArray) {
             BITEvent *event = [[BITEvent alloc] initWithDictionary:eventDictionary];

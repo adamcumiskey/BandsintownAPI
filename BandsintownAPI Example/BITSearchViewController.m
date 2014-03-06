@@ -99,12 +99,8 @@
 #pragma mark - Search Request Values
 - (BITLocation *)searchLocation
 {
-    if ([_locationTypeSegmentedControl selectedSegmentIndex] == 0) {
-        return [BITLocation locationWithPrimaryString:_cityTextField.text
-                                   andSecondaryString:_stateTextField.text];
-    } else {
-        return [BITLocation currentLocation];
-    }
+    return [BITLocation locationWithPrimaryString:_cityTextField.text
+                               andSecondaryString:_stateTextField.text];
 }
 
 - (BITDateRange *)searchDateRange

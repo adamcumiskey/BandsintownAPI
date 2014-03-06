@@ -19,8 +19,6 @@
 //  Copyright (c) 2014 Adam Cumiskey. All rights reserved.
 //
 
-#import <JSONKit/JSONKit.h>
-
 #import "BITRequest.h"
 #import "BITAuthManager.h"
 
