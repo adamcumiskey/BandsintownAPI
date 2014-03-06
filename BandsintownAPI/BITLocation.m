@@ -121,7 +121,7 @@
 #pragma mark - Debug
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"BITLocation[type = %d, \
+	return [NSString stringWithFormat:@"BITLocation[type = %ld, \
             primaryString = %@, \
             secondaryString = %@, \
             latitude = %@, \
