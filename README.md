@@ -1,12 +1,12 @@
 #BandsInTownAPI
 Objective-C API wrapper for the BandsInTown API (http://www.bandsintown.com/api/overview).
 ##Installation
-To install the API, drag the BandsintownAPI folder into your project and add all the files to your target. JSONKit is also currently required. I will be adding Cocoapods support at some point in the near future which should make this process much more sane.
+Intstall using Cocoapods! Just add `pod 'BandsintownAPI', '~> 0.1.0'` to your Podfile and run `pod install` on the command line.
 
 __REQUIRED__: In the app delegate, register a name for your app in the application:didFinishLaunchingWithOptions: method
 
     #import "MyAppNameDelegate.h"
-    #import "BandsintownAPI/Bandsintown.h"
+    #import <BandsintownAPI/Bandsintown.h>
     
     @implementation MyAppNameDelegate
     
