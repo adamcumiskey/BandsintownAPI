@@ -1,7 +1,7 @@
 #BandsInTownAPI
 Objective-C API wrapper for the BandsInTown API (http://www.bandsintown.com/api/overview).
 ##Installation
-Intstall using Cocoapods! Just add `pod 'BandsintownAPI', '~> 0.1.0'` to your Podfile and run `pod install` on the command line.
+Intstall using CocoaPods! Just add `pod 'BandsintownAPI', '~> 0.1.0'` to your Podfile and run `pod install` on the command line.
 
 __REQUIRED__: In the app delegate, register a name for your app in the application:didFinishLaunchingWithOptions: method
 
